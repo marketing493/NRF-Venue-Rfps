@@ -44,7 +44,8 @@
       ],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": "Also Danny Meyer's. Currently Yelp's #1 restaurant in the country, with huge buzz even without a MICHELIN star."
+      "specialty": "Also Danny Meyer's. Currently Yelp's #1 restaurant in the country, with huge buzz even without a MICHELIN star.",
+      "photo_pages": []
     },
     {
       "id": "zou-zous",
@@ -59,7 +60,7 @@
         "method": "email",
         "email": "mcrane@qualitybranded.com"
       },
-      "website": null,
+      "website": "https://www.zouzousnyc.com",
       "awards": {
         "michelin_stars": 0,
         "james_beard": true
@@ -104,7 +105,10 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": [
+        "https://www.opentable.com/r/zou-zous-new-york"
+      ]
     },
     {
       "id": "hav-mar",
@@ -158,7 +162,8 @@
       ],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "greywind",
@@ -206,7 +211,8 @@
       ],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "electric-lemon",
@@ -221,7 +227,7 @@
         "method": "form",
         "email": null
       },
-      "website": null,
+      "website": "https://equinox-hotels.com/nyc/restaurants-bars/electric-lemon",
       "awards": {
         "michelin_stars": 0,
         "james_beard": false
@@ -250,7 +256,8 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "estiatorio-milos-hy",
@@ -302,7 +309,8 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "peak",
@@ -317,7 +325,7 @@
         "method": "form",
         "email": null
       },
-      "website": null,
+      "website": "https://www.peaknyc.com",
       "awards": {
         "michelin_stars": 0,
         "james_beard": false
@@ -353,7 +361,10 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": [
+        "https://www.opentable.com/r/peak-restaurant-and-bar-new-york"
+      ]
     },
     {
       "id": "queensyard",
@@ -399,7 +410,8 @@
       ],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "keens-steakhouse",
@@ -467,7 +479,8 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "boqueria-w40th",
@@ -510,7 +523,8 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "hudson-vu",
@@ -564,7 +578,8 @@
       ],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "le-bernardin",
@@ -608,7 +623,8 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": "Eric Ripert (Top Chef judge, globally known) with three MICHELIN stars. A name most clients will recognize on sight."
+      "specialty": "Eric Ripert (Top Chef judge, globally known) with three MICHELIN stars. A name most clients will recognize on sight.",
+      "photo_pages": []
     },
     {
       "id": "shukette",
@@ -651,7 +667,8 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "cote-korean-steakhouse",
@@ -705,7 +722,8 @@
       ],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": "First MICHELIN-starred Korean steakhouse in the US. A great conversation piece and crowd-pleaser."
+      "specialty": "First MICHELIN-starred Korean steakhouse in the US. A great conversation piece and crowd-pleaser.",
+      "photo_pages": []
     },
     {
       "id": "markette",
@@ -751,7 +769,8 @@
       ],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "zaytinya",
@@ -787,7 +806,8 @@
       "highlight": null,
       "specialty": "Celebrity chef José Andrés's Mediterranean mezze restaurant (Greek, Turkish, Lebanese) inside the Ritz-Carlton NoMad.",
       "capacity_source": "Venue outreach tracker (Sunday sheet), October 2026. Travel time estimated from the neighbourhood.",
-      "verified_on": "2026-10-16"
+      "verified_on": "2026-10-16",
+      "photo_pages": []
     },
     {
       "id": "bad-roman",
@@ -847,7 +867,8 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "per-se",
@@ -901,7 +922,8 @@
       ],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": "Thomas Keller is arguably the most recognizable chef name in America. Three MICHELIN stars plus a Central Park view make this the single most impressive room on the list."
+      "specialty": "Thomas Keller is arguably the most recognizable chef name in America. Three MICHELIN stars plus a Central Park view make this the single most impressive room on the list.",
+      "photo_pages": []
     },
     {
       "id": "aquavit",
@@ -956,7 +978,8 @@
       ],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": "Two MICHELIN stars and long-standing NYC institution status. Trades more on legacy than an active celebrity chef."
+      "specialty": "Two MICHELIN stars and long-standing NYC institution status. Trades more on legacy than an active celebrity chef.",
+      "photo_pages": []
     },
     {
       "id": "gramercy-tavern",
@@ -1004,7 +1027,8 @@
       ],
       "capacity_source": "Venue outreach tracker (Sunday sheet), October 2026.",
       "verified_on": "2026-09-09",
-      "specialty": "Danny Meyer's flagship carries real name recognition, plus a MICHELIN star and James Beard pedigree."
+      "specialty": "Danny Meyer's flagship carries real name recognition, plus a MICHELIN star and James Beard pedigree.",
+      "photo_pages": []
     },
     {
       "id": "quality-italian",
@@ -1019,7 +1043,7 @@
         "method": "email",
         "email": "dbryant@qualitybranded.com"
       },
-      "website": null,
+      "website": "https://www.qualityitalian.com",
       "awards": {
         "michelin_stars": 0,
         "james_beard": false
@@ -1056,7 +1080,10 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": [
+        "https://www.opentable.com/r/quality-italian-new-york"
+      ]
     },
     {
       "id": "semma",
@@ -1101,7 +1128,8 @@
       ],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "eleven-madison-park",
@@ -1146,7 +1174,8 @@
       ],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": "Three MICHELIN stars, fully plant-based tasting menu from chef Daniel Humm. The balcony private room seats only about 24 to 27."
+      "specialty": "Three MICHELIN stars, fully plant-based tasting menu from chef Daniel Humm. The balcony private room seats only about 24 to 27.",
+      "photo_pages": []
     },
     {
       "id": "union-square-cafe",
@@ -1183,7 +1212,8 @@
       "highlight": null,
       "specialty": "Danny Meyer's first ever restaurant.",
       "capacity_source": "Venue outreach tracker (Sunday sheet), October 2026. Travel time estimated from the neighbourhood.",
-      "verified_on": "2026-10-16"
+      "verified_on": "2026-10-16",
+      "photo_pages": []
     },
     {
       "id": "lartusi",
@@ -1220,7 +1250,8 @@
       "highlight": null,
       "specialty": "West Village Italian from Chef Joe Vigorito. A beloved, warm and bustling neighborhood mainstay since 2008 with a good wine program. No celebrity chef, no MICHELIN star.",
       "capacity_source": "Venue outreach tracker (Sunday sheet), October 2026. Travel time estimated from the neighbourhood.",
-      "verified_on": "2026-10-16"
+      "verified_on": "2026-10-16",
+      "photo_pages": []
     },
     {
       "id": "the-modern",
@@ -1272,7 +1303,8 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": "Two MICHELIN stars, Chef Thomas Allan, at MoMA overlooking the Sculpture Garden. A Danny Meyer / USHG property with a genuine view."
+      "specialty": "Two MICHELIN stars, Chef Thomas Allan, at MoMA overlooking the Sculpture Garden. A Danny Meyer / USHG property with a genuine view.",
+      "photo_pages": []
     },
     {
       "id": "marea",
@@ -1334,7 +1366,10 @@
       ],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": [
+        "https://en.wikipedia.org/wiki/Marea_(restaurant)"
+      ]
     },
     {
       "id": "the-grill-the-pool",
@@ -1386,7 +1421,8 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "jungsik",
@@ -1432,7 +1468,8 @@
       ],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": "Three MICHELIN stars and a striking Tribeca setting. Chef Jungsik Yim is deeply respected but less of a household name."
+      "specialty": "Three MICHELIN stars and a striking Tribeca setting. Chef Jungsik Yim is deeply respected but less of a household name.",
+      "photo_pages": []
     },
     {
       "id": "smith-wollensky",
@@ -1476,7 +1513,10 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": [
+        "https://www.opentable.com/r/smith-and-wollensky-new-york"
+      ]
     },
     {
       "id": "trattoria-one-fifth",
@@ -1525,10 +1565,17 @@
         "single_figure": false
       },
       "highlight": null,
-      "notes": [],
+      "notes": [
+        "Closed permanently on 22 February 2025. Hidden from the board."
+      ],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": [],
+      "closed": {
+        "on": "2025-02-22",
+        "source": "https://hoodline.com/2025/02/chef-marc-forgione-closes-trattoria-one-fifth-less-than-a-year-after-opening-focuses-on-tribeca-venture/"
+      }
     },
     {
       "id": "manhatta",
@@ -1543,7 +1590,7 @@
         "method": "form",
         "email": null
       },
-      "website": null,
+      "website": "https://www.manhattarestaurant.com",
       "awards": {
         "michelin_stars": 0,
         "james_beard": false
@@ -1572,7 +1619,8 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "saga-overstory",
@@ -1616,7 +1664,8 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "crown-shy",
@@ -1668,7 +1717,8 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "temple-court",
@@ -1736,7 +1786,8 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "torrisi",
@@ -1780,7 +1831,8 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "kabawa",
@@ -1824,7 +1876,8 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "amali",
@@ -1887,7 +1940,8 @@
       ],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "tucci",
@@ -1939,7 +1993,8 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "daniel",
@@ -1975,7 +2030,8 @@
       "highlight": null,
       "specialty": "Chef Daniel Boulud is a true celebrity chef: multiple restaurants, TV presence, James Beard winner, and one of the most recognized names in fine dining. One MICHELIN star.",
       "capacity_source": "Venue outreach tracker (Sunday sheet), October 2026. Travel time estimated from the neighbourhood.",
-      "verified_on": "2026-10-16"
+      "verified_on": "2026-10-16",
+      "photo_pages": []
     },
     {
       "id": "freemans",
@@ -2035,7 +2091,8 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     },
     {
       "id": "aska",
@@ -2087,7 +2144,8 @@
       "notes": [],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
-      "specialty": null
+      "specialty": null,
+      "photo_pages": []
     }
   ]
 }

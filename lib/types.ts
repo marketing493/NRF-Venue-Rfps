@@ -62,6 +62,10 @@ export interface Venue {
   notes: string[];
   capacity_source: string;
   verified_on: string;
+  /** Other public pages that carry the venue's photo, tried after the website. */
+  photo_pages?: string[];
+  /** Set when the venue has shut. Closed venues stay in the data file for the record but leave the board. */
+  closed?: { on: string; source: string };
 }
 
 export type Verdict = 'good' | 'tight' | 'buyout' | 'just_under' | 'too_small' | 'unknown' | 'not_offered';

@@ -228,6 +228,29 @@ export async function patchMeta(venueId: string, patch: MetaPatch): Promise<Venu
   });
 }
 
+export async function getCoverUrl(venueId: string): Promise<string | null> {
+  return withSchema(async q => {
+    const rows = await q`SELECT cover_url FROM venue_meta WHERE venue_id = ${venueId}`;
+    return (rows[0]?.cover_url as string) ?? null;
+  });
+}
+
+/**
+ * Claim a named job so only one server instance runs it per window.
+ * Returns false when someone else ran it within the given number of minutes.
+ */
+export async function claimJob(name: string, minutes: number): Promise<boolean> {
+  return withSchema(async q => {
+    const now = new Date().toISOString();
+    const cutoff = new Date(Date.now() - minutes * 60_000).toISOString();
+    const rows = await q`INSERT INTO app_settings (key, value) VALUES (${'job:' + name}, ${now})
+      ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value
+      WHERE app_settings.value < ${cutoff}
+      RETURNING key`;
+    return rows.length > 0;
+  });
+}
+
 export async function logActivity(venueId: string, night: NightKey | null, action: string, detail: string | null, actor: string | null) {
   await withSchema(q => q`INSERT INTO activity (venue_id, night, action, detail, actor) VALUES (${venueId}, ${night}, ${action}, ${detail}, ${actor})`);
 }

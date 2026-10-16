@@ -1,7 +1,7 @@
 # NRF 2027 Venue RFPs
 
 An outreach board for two Impact Analytics evenings around NRF 2027 (Javits Center, 10 to 12 January 2027).
-42 New York venues, ranked by distance from Javits. One click per venue opens a prefilled Gmail
+41 New York venues, ranked by distance from Javits. One click per venue opens a prefilled Gmail
 draft. Status, quotes, notes and the shortlist are stored in Neon Postgres and shared by everyone using the board.
 
 | | |
@@ -39,8 +39,11 @@ draft. Status, quotes, notes and the shortlist are stored in Neon Postgres and s
 Tables are created automatically on the first request. There is no migration step.
 The top bar shows **Saved to Neon** when the database is connected, or **This browser only** when it is not.
 
-After the first deploy, click **Photos** once. It reads each venue's Open Graph image from its own website and caches the URL in Neon.
-Any cover can also be set by hand in the venue drawer.
+**Venue photos load themselves.** The first time anyone opens the board after a deploy, the server reads each venue's photo
+from its own website (Open Graph, Twitter card or JSON-LD image), falling back to a known listing page, checks the image actually
+loads, and saves the URL in Neon so everyone sees the same covers. It runs at most once every six hours. Images are relayed through
+`/api/img/:venue` so hotlink-blocking and http-only venue sites still display. **Photos** in the top bar fills any gaps (or refreshes
+all of them), **Find photo** in a venue's drawer retries one venue, and any cover can be pasted by hand.
 
 ## Local development
 
@@ -59,7 +62,8 @@ npm test                      # fit calculation, email wording and Gmail URL
 | `POST /api/outreach/:venue/:night` | Field-level patch of status, `fb_minimum`, `all_in`, `fees`, `notes`, `sent_at` |
 | `POST /api/meta/:venue` | Star, cover image URL, email override |
 | `GET /api/draft/:venue/:night` | Prefilled subject, body and Gmail URL |
-| `POST /api/covers` | Fetch venue photos from their own sites |
+| `POST /api/covers` | Fetch venue photos (`{}` missing only, `{"force":true}` all, `{"venue":id}` one) and save them in Neon |
+| `GET /api/img/:venue` | The venue's saved photo, relayed and cached for a day |
 | `POST /api/reset` | Clear outreach (`{"confirm":"RESET"}`) |
 | `GET /api/activity` | Latest 80 changes |
 | `GET /api/export?format=csv\|json` | The whole tracker |

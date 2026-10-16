@@ -247,10 +247,33 @@ export function Drawer({ venue, brief, night, outreach, meta, activity, onClose,
         <section className="d-sec no-print">
           <h4>Cover photo</h4>
           <CoverField meta={meta} onSave={url => updateMeta({ cover_url: url })} />
+          {(venue.website || venue.photo_pages?.length) ? <FindPhoto venueId={venue.id} onFound={url => updateMeta({ cover_url: url })} /> : null}
         </section>
         <div style={{ height: 24 }} />
       </aside>
     </>
+  );
+}
+
+function FindPhoto({ venueId, onFound }: { venueId: string; onFound: (url: string) => void }) {
+  const [state, setState] = useState<'idle' | 'busy' | 'none' | 'error'>('idle');
+  const run = async () => {
+    setState('busy');
+    try {
+      const r = await fetch('/api/covers', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ venue: venueId }) });
+      const j = await r.json();
+      if (!r.ok) throw new Error(j.error);
+      if (j.found?.[venueId]) { onFound(j.found[venueId]); setState('idle'); } else setState('none');
+    } catch {
+      setState('error');
+    }
+  };
+  return (
+    <div className="foot-row" style={{ marginTop: 12 }}>
+      <button className="btn sm" onClick={run} disabled={state === 'busy'}>{state === 'busy' ? 'Looking' : 'Find photo from venue site'}</button>
+      {state === 'none' && <span className="hint">No usable photo on their site. Paste one above.</span>}
+      {state === 'error' && <span className="hint">Needs the Neon connection. Paste a link above instead.</span>}
+    </div>
   );
 }
 

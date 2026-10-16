@@ -65,6 +65,26 @@ export default function Board({ venues, brief }: { venues: Venue[]; brief: Brief
     } catch { /* ignore */ }
   }, []);
   useEffect(() => { if (t.db) void loadActivity(); }, [t.db, loadActivity]);
+
+  // First visit after deploy: fetch any missing venue photos on the server and save them in Neon.
+  // The server runs this at most once every six hours, however many people open the board.
+  const autoPhotos = useRef(false);
+  useEffect(() => {
+    if (!t.db || t.sync === 'loading' || autoPhotos.current) return;
+    autoPhotos.current = true;
+    if (venues.every(v => meta[v.id]?.cover_url || (!v.website && !v.photo_pages?.length))) return;
+    (async () => {
+      try {
+        const r = await fetch('/api/covers', { method: 'POST', headers: t.headers(), body: JSON.stringify({ auto: true }) });
+        if (!r.ok) return;
+        const j = await r.json();
+        if (Object.keys(j.found ?? {}).length) {
+          t.applyCovers(j.found);
+          void loadActivity();
+        }
+      } catch { /* photos are a nicety; never block the board */ }
+    })();
+  }, [t.db, t.sync]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { if (t.error) toast(t.error); }, [t.error, toast]);
 
   // Refs so the actions object stays stable and memoized cards skip re-rendering.
@@ -198,14 +218,17 @@ export default function Board({ venues, brief }: { venues: Venue[]; brief: Brief
   // ----- Top bar actions -----
   const fetchPhotos = async () => {
     if (!t.db) { toast('Connect Neon first. Photos are cached in the database.'); return; }
+    const missing = venues.filter(v => !meta[v.id]?.cover_url).length;
+    const force = missing === 0;
+    if (force && !window.confirm('Every venue already has a photo. Fetch fresh photos for all of them?')) return;
     setFetchingPhotos(true);
-    toast('Pulling each venue’s photo from its own site. This takes up to a minute.');
+    toast(`Pulling ${force ? 'every' : missing} venue photo${missing === 1 ? '' : 's'} from their own sites. This takes up to a minute.`);
     try {
-      const r = await fetch('/api/covers', { method: 'POST', headers: t.headers(), body: '{}' });
+      const r = await fetch('/api/covers', { method: 'POST', headers: t.headers(), body: JSON.stringify({ force }) });
       const j = await r.json();
       if (!r.ok) throw new Error(j.error || 'Photo fetch failed');
       t.applyCovers(j.found);
-      toast(j.checked ? `Found ${Object.keys(j.found).length} of ${j.checked} photos` : 'Every venue already has a photo');
+      toast(j.checked ? `Found ${Object.keys(j.found).length} of ${j.checked} photos${j.unchecked?.length ? `. Click again for the remaining ${j.unchecked.length}.` : ''}` : 'Every venue already has a photo');
     } catch (e) {
       toast((e as Error).message);
     } finally {
