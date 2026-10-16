@@ -1,0 +1,1907 @@
+{
+  "venues": [
+    {
+      "id": "ci-siamo",
+      "name": "Ci Siamo",
+      "area": "Manhattan West",
+      "travel": {
+        "minutes": 7,
+        "mode": "walk"
+      },
+      "order": 1,
+      "contact": {
+        "method": "email",
+        "email": "infonyc@cisiamo.com"
+      },
+      "website": "https://www.cisiamo.com",
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": true
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "PDR + terrace",
+          "seated": 50,
+          "standing": 75,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [
+        "Replaced Legacy Records as the closest Saturday option after Legacy Records closed in August 2025."
+      ],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "zou-zous",
+      "name": "Zou Zou's",
+      "area": "Manhattan West",
+      "travel": {
+        "minutes": 8,
+        "mode": "walk"
+      },
+      "order": 2,
+      "contact": {
+        "method": "email",
+        "email": "mcrane@qualitybranded.com"
+      },
+      "website": null,
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": true
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Mural + Parlour",
+          "seated": 42,
+          "standing": 50,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        },
+        {
+          "name": "Mural",
+          "seated": 24,
+          "standing": 30,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        },
+        {
+          "name": "Parlour",
+          "seated": 18,
+          "standing": 20,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": 100,
+        "standing": null,
+        "approximate": true,
+        "single_figure": true
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "hav-mar",
+      "name": "Hav & Mar",
+      "area": "Chelsea / West Side",
+      "travel": {
+        "minutes": 8,
+        "mode": "walk"
+      },
+      "order": 3,
+      "contact": {
+        "method": "form",
+        "email": null
+      },
+      "website": "https://www.havandmar.com",
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": true
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "The Cove",
+          "seated": 16,
+          "standing": 22,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        },
+        {
+          "name": "Main dining room",
+          "seated": 120,
+          "standing": 185,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": true
+        }
+      ],
+      "buyout": {
+        "seated": 120,
+        "standing": 185,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [
+        "The private space is the main dining room. Available, but only on a full buyout."
+      ],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "greywind",
+      "name": "Greywind",
+      "area": "Hudson Yards",
+      "travel": {
+        "minutes": 9,
+        "mode": "walk"
+      },
+      "order": 4,
+      "contact": {
+        "method": "email",
+        "email": "hello@greywindnyc.com"
+      },
+      "website": "https://www.greywindnyc.com",
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": true
+      },
+      "nights": [
+        "sat"
+      ],
+      "rooms": [
+        {
+          "name": "The Loft",
+          "seated": 40,
+          "standing": 60,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": 120,
+        "standing": null,
+        "approximate": true,
+        "single_figure": true
+      },
+      "highlight": "Strongest match for Saturday",
+      "notes": [
+        "Nine minutes on foot from Javits.",
+        "Published buyout format already matches the brief: a standing reception with passed and stationed hors d'oeuvres, then a seated dinner.",
+        "Event menus from $155 per person.",
+        "Closed Sundays, so offered for Saturday only."
+      ],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "electric-lemon",
+      "name": "Electric Lemon",
+      "area": "Hudson Yards",
+      "travel": {
+        "minutes": 10,
+        "mode": "walk"
+      },
+      "order": 5,
+      "contact": {
+        "method": "form",
+        "email": null
+      },
+      "website": null,
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Private dining room",
+          "seated": 72,
+          "standing": 100,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "estiatorio-milos-hy",
+      "name": "Estiatorio Milos HY",
+      "area": "Hudson Yards",
+      "travel": {
+        "minutes": 10,
+        "mode": "walk"
+      },
+      "order": 6,
+      "contact": {
+        "method": "form",
+        "email": null
+      },
+      "website": "https://www.estiatoriomilos.com",
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Terrace",
+          "seated": 50,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        },
+        {
+          "name": "Wine Bar",
+          "seated": 40,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "peak",
+      "name": "Peak",
+      "area": "Hudson Yards",
+      "travel": {
+        "minutes": 10,
+        "mode": "walk"
+      },
+      "order": 7,
+      "contact": {
+        "method": "form",
+        "email": null
+      },
+      "website": null,
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat"
+      ],
+      "rooms": [
+        {
+          "name": "Event space",
+          "seated": 250,
+          "standing": 300,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        },
+        {
+          "name": "Sky Cellar",
+          "seated": 18,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "queensyard",
+      "name": "Queensyard",
+      "area": "Hudson Yards",
+      "travel": {
+        "minutes": 10,
+        "mode": "walk"
+      },
+      "order": 8,
+      "contact": {
+        "method": "email",
+        "email": "info@queensyardnyc.com"
+      },
+      "website": "https://www.queensyardnyc.com",
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "The Garden",
+          "seated": 50,
+          "standing": 65,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": 125,
+        "standing": 225,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": "Budget anchor",
+      "notes": [
+        "The only venue on the board that publishes per-head pricing: $85 to $135 depending on courses. Use it to sanity-check budget before replies arrive."
+      ],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "keens-steakhouse",
+      "name": "Keens Steakhouse",
+      "area": "Garment District",
+      "travel": {
+        "minutes": 12,
+        "mode": "walk"
+      },
+      "order": 9,
+      "contact": {
+        "method": "email",
+        "email": "banquets@keens.com"
+      },
+      "website": "https://www.keens.com",
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Lambs Room",
+          "seated": 80,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        },
+        {
+          "name": "Lincoln Room",
+          "seated": 45,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        },
+        {
+          "name": "Bullmoose Room",
+          "seated": 35,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        },
+        {
+          "name": "Lillie Langtry Room",
+          "seated": 25,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "boqueria-w40th",
+      "name": "Boqueria W40th",
+      "area": "Times Square",
+      "travel": {
+        "minutes": 12,
+        "mode": "walk"
+      },
+      "order": 10,
+      "contact": {
+        "method": "email",
+        "email": "events@boquerianyc.com"
+      },
+      "website": "https://www.boquerianyc.com",
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat"
+      ],
+      "rooms": [
+        {
+          "name": "Private dining room",
+          "seated": 24,
+          "standing": 35,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": 100,
+        "standing": 175,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "hudson-vu",
+      "name": "Hudson VU",
+      "area": "Hell's Kitchen",
+      "travel": {
+        "minutes": 12,
+        "mode": "walk"
+      },
+      "order": 11,
+      "contact": {
+        "method": "email",
+        "email": "privateevents@hudsonvunyc.com"
+      },
+      "website": "https://www.hudsonvunyc.com",
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Sunroom",
+          "seated": 40,
+          "standing": 60,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        },
+        {
+          "name": "360 VU rooftop",
+          "seated": null,
+          "standing": 250,
+          "approximate": true,
+          "single_figure": true,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [
+        "The Sunroom seats the Sunday party exactly. The 360 VU rooftop is far larger, so the fit is judged on the Sunroom."
+      ],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "le-bernardin",
+      "name": "Le Bernardin",
+      "area": "Midtown West",
+      "travel": {
+        "minutes": 10,
+        "mode": "car"
+      },
+      "order": 12,
+      "contact": {
+        "method": "email",
+        "email": "events@le-bernardin.com"
+      },
+      "website": "https://www.le-bernardin.com",
+      "awards": {
+        "michelin_stars": 3,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Les Salons (dividable)",
+          "seated": 80,
+          "standing": 80,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "shukette",
+      "name": "Shukette",
+      "area": "Chelsea",
+      "travel": {
+        "minutes": 11,
+        "mode": "car"
+      },
+      "order": 13,
+      "contact": {
+        "method": "form",
+        "email": null
+      },
+      "website": null,
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": true
+      },
+      "nights": [
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Private dining room",
+          "seated": 26,
+          "standing": 30,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "cote-korean-steakhouse",
+      "name": "COTE Korean Steakhouse",
+      "area": "Flatiron",
+      "travel": {
+        "minutes": 13,
+        "mode": "car"
+      },
+      "order": 14,
+      "contact": {
+        "method": "email",
+        "email": "event@cotenyc.com"
+      },
+      "website": "https://www.cotenyc.com",
+      "awards": {
+        "michelin_stars": 1,
+        "james_beard": true
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Undercote",
+          "seated": 55,
+          "standing": null,
+          "approximate": true,
+          "single_figure": true,
+          "exclusive": false
+        },
+        {
+          "name": "Main room",
+          "seated": 100,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": true
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "markette",
+      "name": "Markette",
+      "area": "Chelsea",
+      "travel": {
+        "minutes": 13,
+        "mode": "car"
+      },
+      "order": 15,
+      "contact": {
+        "method": "email",
+        "email": "hello@marketterestaurant.com"
+      },
+      "website": "https://www.marketterestaurant.com",
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Main dining room",
+          "seated": 75,
+          "standing": 100,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": true
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [
+        "The source spreadsheet's summary tab tagged it James Beard. Its detail tab corrects that to a MICHELIN Young Chef Award, so it carries no JBF tag."
+      ],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "bad-roman",
+      "name": "Bad Roman",
+      "area": "Columbus Circle",
+      "travel": {
+        "minutes": 14,
+        "mode": "car"
+      },
+      "order": 16,
+      "contact": {
+        "method": "email",
+        "email": "pjadoonanan@qualitybranded.com"
+      },
+      "website": null,
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Piazza + Lazzeri",
+          "seated": 80,
+          "standing": 100,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        },
+        {
+          "name": "Piazza",
+          "seated": 48,
+          "standing": 60,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        },
+        {
+          "name": "Lazzeri",
+          "seated": 40,
+          "standing": 50,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "per-se",
+      "name": "Per Se",
+      "area": "Columbus Circle",
+      "travel": {
+        "minutes": 14,
+        "mode": "car"
+      },
+      "order": 17,
+      "contact": {
+        "method": "form",
+        "email": null
+      },
+      "website": "https://thomaskeller.com/perseny",
+      "awards": {
+        "michelin_stars": 3,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "West Room",
+          "seated": 66,
+          "standing": 120,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        },
+        {
+          "name": "East Room",
+          "seated": 10,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [
+        "No public events address. Use the private dining enquiry at thomaskeller.com/perseny."
+      ],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "aquavit",
+      "name": "Aquavit",
+      "area": "Midtown East",
+      "travel": {
+        "minutes": 15,
+        "mode": "car"
+      },
+      "order": 18,
+      "contact": {
+        "method": "email",
+        "email": "events@aquavit.org"
+      },
+      "website": "https://www.aquavit.org",
+      "awards": {
+        "michelin_stars": 2,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Nobel Room",
+          "seated": 76,
+          "standing": 100,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        },
+        {
+          "name": "Linné Salon",
+          "seated": 30,
+          "standing": 50,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "gramercy-tavern",
+      "name": "Gramercy Tavern",
+      "area": "Flatiron",
+      "travel": {
+        "minutes": 15,
+        "mode": "car"
+      },
+      "order": 19,
+      "contact": {
+        "method": "form",
+        "email": null
+      },
+      "website": "https://www.gramercytavern.com",
+      "awards": {
+        "michelin_stars": 1,
+        "james_beard": true
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Vault",
+          "seated": 40,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        },
+        {
+          "name": "Private dining room",
+          "seated": 22,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": 120,
+        "standing": null,
+        "approximate": true,
+        "single_figure": true
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "quality-italian",
+      "name": "Quality Italian",
+      "area": "Midtown",
+      "travel": {
+        "minutes": 15,
+        "mode": "car"
+      },
+      "order": 20,
+      "contact": {
+        "method": "email",
+        "email": "dbryant@qualitybranded.com"
+      },
+      "website": null,
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Trophy Room",
+          "seated": 60,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        },
+        {
+          "name": "The 57 Room",
+          "seated": 32,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "semma",
+      "name": "Semma",
+      "area": "West Village",
+      "travel": {
+        "minutes": 15,
+        "mode": "car"
+      },
+      "order": 21,
+      "contact": {
+        "method": "email",
+        "email": "events@semma.nyc"
+      },
+      "website": "https://www.semma.nyc",
+      "awards": {
+        "michelin_stars": 1,
+        "james_beard": true
+      },
+      "nights": [
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Semi-private area",
+          "seated": 28,
+          "standing": 38,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [
+        "Kept on the board by request. The semi-private area seats 28, just under the Sunday minimum."
+      ],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "eleven-madison-park",
+      "name": "Eleven Madison Park",
+      "area": "Flatiron / NoMad",
+      "travel": {
+        "minutes": 15,
+        "mode": "car"
+      },
+      "order": 22,
+      "contact": {
+        "method": "email",
+        "email": "info@elevenmadisonpark.com"
+      },
+      "website": "https://www.elevenmadisonpark.com",
+      "awards": {
+        "michelin_stars": 3,
+        "james_beard": false
+      },
+      "nights": [
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Balcony private dining room",
+          "seated": 27,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [
+        "Kept on the board by request. The balcony private dining room seats 27, just under the Sunday minimum."
+      ],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "the-modern",
+      "name": "The Modern",
+      "area": "Midtown",
+      "travel": {
+        "minutes": 16,
+        "mode": "car"
+      },
+      "order": 23,
+      "contact": {
+        "method": "email",
+        "email": "info@themodernnyc.com"
+      },
+      "website": "https://www.themodernnyc.com",
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Private dining room",
+          "seated": 64,
+          "standing": 80,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        },
+        {
+          "name": "One long table",
+          "seated": 30,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": 100,
+        "standing": 250,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "marea",
+      "name": "Marea",
+      "area": "Central Park South",
+      "travel": {
+        "minutes": 16,
+        "mode": "car"
+      },
+      "order": 24,
+      "contact": {
+        "method": "email",
+        "email": "mareaevents@altamareagroup.com"
+      },
+      "website": null,
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Salerno",
+          "seated": 35,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        },
+        {
+          "name": "Ravello",
+          "seated": 30,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        },
+        {
+          "name": "Praiano",
+          "seated": 24,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": 125,
+        "standing": 200,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [
+        "Private rooms top out at 35 seated. The 125 figure is the full restaurant buyout, not a private room."
+      ],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "the-grill-the-pool",
+      "name": "The Grill & The Pool",
+      "area": "Midtown East",
+      "travel": {
+        "minutes": 17,
+        "mode": "car"
+      },
+      "order": 25,
+      "contact": {
+        "method": "email",
+        "email": "reservations@thegrillnewyork.com"
+      },
+      "website": "https://www.thegrillnewyork.com",
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Gallery",
+          "seated": 22,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        },
+        {
+          "name": "Salon",
+          "seated": 15,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": 180,
+        "standing": 350,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "jungsik",
+      "name": "Jungsik",
+      "area": "Tribeca",
+      "travel": {
+        "minutes": 18,
+        "mode": "car"
+      },
+      "order": 26,
+      "contact": {
+        "method": "email",
+        "email": "events@jungsik.com"
+      },
+      "website": "https://www.jungsik.com",
+      "awards": {
+        "michelin_stars": 3,
+        "james_beard": false
+      },
+      "nights": [
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Private dining room",
+          "seated": 16,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": 35,
+        "standing": null,
+        "approximate": false,
+        "single_figure": true
+      },
+      "highlight": null,
+      "notes": [
+        "Earned a third MICHELIN star in December 2024. The private room seats 16, so it reaches the Sunday headcount only on a buyout."
+      ],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "smith-wollensky",
+      "name": "Smith & Wollensky",
+      "area": "Midtown East",
+      "travel": {
+        "minutes": 18,
+        "mode": "car"
+      },
+      "order": 27,
+      "contact": {
+        "method": "email",
+        "email": "mquayle@qualitybranded.com"
+      },
+      "website": null,
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "2nd-floor rooms combined",
+          "seated": 130,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "trattoria-one-fifth",
+      "name": "Trattoria One Fifth",
+      "area": "Greenwich Village",
+      "travel": {
+        "minutes": 18,
+        "mode": "car"
+      },
+      "order": 28,
+      "contact": {
+        "method": "form",
+        "email": null
+      },
+      "website": null,
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Semi-private",
+          "seated": 100,
+          "standing": 125,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        },
+        {
+          "name": "The Mews",
+          "seated": 45,
+          "standing": 70,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": 150,
+        "standing": 225,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "manhatta",
+      "name": "Manhatta",
+      "area": "Financial District",
+      "travel": {
+        "minutes": 20,
+        "mode": "car"
+      },
+      "order": 29,
+      "contact": {
+        "method": "form",
+        "email": null
+      },
+      "website": null,
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Private dining room",
+          "seated": 35,
+          "standing": 40,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": 150,
+        "standing": 250,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "saga-overstory",
+      "name": "SAGA & Overstory",
+      "area": "Financial District",
+      "travel": {
+        "minutes": 20,
+        "mode": "car"
+      },
+      "order": 30,
+      "contact": {
+        "method": "email",
+        "email": "events@saga-nyc.com"
+      },
+      "website": "https://www.saga-nyc.com",
+      "awards": {
+        "michelin_stars": 1,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "62nd-floor rooms",
+          "seated": 40,
+          "standing": 70,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "crown-shy",
+      "name": "Crown Shy",
+      "area": "Financial District",
+      "travel": {
+        "minutes": 20,
+        "mode": "car"
+      },
+      "order": 31,
+      "contact": {
+        "method": "email",
+        "email": "events@crownshy.nyc"
+      },
+      "website": "https://www.crownshy.nyc",
+      "awards": {
+        "michelin_stars": 1,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Pearl + Cedar",
+          "seated": 50,
+          "standing": 80,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        },
+        {
+          "name": "Nook",
+          "seated": 18,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": 125,
+        "standing": 300,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "temple-court",
+      "name": "Temple Court",
+      "area": "Financial District",
+      "travel": {
+        "minutes": 20,
+        "mode": "car"
+      },
+      "order": 32,
+      "contact": {
+        "method": "form",
+        "email": null
+      },
+      "website": null,
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Full Cellar",
+          "seated": null,
+          "standing": 225,
+          "approximate": true,
+          "single_figure": true,
+          "exclusive": false
+        },
+        {
+          "name": "Farnsworth Room",
+          "seated": 100,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        },
+        {
+          "name": "Kelly Room",
+          "seated": 70,
+          "standing": 80,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        },
+        {
+          "name": "Chapel St Room",
+          "seated": 20,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "torrisi",
+      "name": "Torrisi",
+      "area": "Nolita / SoHo",
+      "travel": {
+        "minutes": 20,
+        "mode": "car"
+      },
+      "order": 33,
+      "contact": {
+        "method": "email",
+        "email": "reservations@torrisinyc.com"
+      },
+      "website": "https://www.torrisinyc.com",
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Private dining room",
+          "seated": 45,
+          "standing": 125,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "kabawa",
+      "name": "Kabawa",
+      "area": "Bowery",
+      "travel": {
+        "minutes": 20,
+        "mode": "car"
+      },
+      "order": 34,
+      "contact": {
+        "method": "email",
+        "email": "hello@kabawa.com"
+      },
+      "website": "https://www.kabawa.com",
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Private dining room / full room",
+          "seated": 48,
+          "standing": 60,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": true
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "amali",
+      "name": "Amali",
+      "area": "Upper East Side",
+      "travel": {
+        "minutes": 20,
+        "mode": "car"
+      },
+      "order": 35,
+      "contact": {
+        "method": "email",
+        "email": "events@amalinyc.com"
+      },
+      "website": "https://www.amalinyc.com",
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Skylight Room",
+          "seated": 40,
+          "standing": 65,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        },
+        {
+          "name": "Sopra",
+          "seated": 40,
+          "standing": 60,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        },
+        {
+          "name": "Fireplace Room",
+          "seated": 22,
+          "standing": 35,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": 120,
+        "standing": 200,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": "Strongest structural match for Sunday",
+      "notes": [
+        "Two upstairs rooms separate with sliding barn doors, so cocktails run in one and dinner in the other. That is the 6:00 cocktails then 6:30 dinner running order in one booking.",
+        "Figures come from the venue's own events PDF."
+      ],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "tucci",
+      "name": "Tucci",
+      "area": "NoHo",
+      "travel": {
+        "minutes": 20,
+        "mode": "car"
+      },
+      "order": 36,
+      "contact": {
+        "method": "email",
+        "email": "info@tuccinyc.com"
+      },
+      "website": "https://www.tuccinyc.com",
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Bleecker St Room",
+          "seated": 40,
+          "standing": 60,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        },
+        {
+          "name": "Wine Cellar",
+          "seated": 12,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": 130,
+        "standing": 290,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "freemans",
+      "name": "Freemans",
+      "area": "Lower East Side",
+      "travel": {
+        "minutes": 22,
+        "mode": "car"
+      },
+      "order": 37,
+      "contact": {
+        "method": "email",
+        "email": "reservations@freemansrestaurant.com"
+      },
+      "website": "https://www.freemansrestaurant.com",
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Red Room",
+          "seated": 30,
+          "standing": 35,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        },
+        {
+          "name": "Blue Room",
+          "seated": 20,
+          "standing": 25,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        },
+        {
+          "name": "Wine Room",
+          "seated": 12,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": 200,
+        "standing": 200,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    },
+    {
+      "id": "aska",
+      "name": "Aska",
+      "area": "Williamsburg",
+      "travel": {
+        "minutes": 25,
+        "mode": "car"
+      },
+      "order": 38,
+      "contact": {
+        "method": "email",
+        "email": "events@askanyc.com"
+      },
+      "website": "https://www.askanyc.com",
+      "awards": {
+        "michelin_stars": 2,
+        "james_beard": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "rooms": [
+        {
+          "name": "Main room privatized",
+          "seated": 50,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": true
+        },
+        {
+          "name": "Cellar",
+          "seated": 16,
+          "standing": null,
+          "approximate": false,
+          "single_figure": true,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "highlight": null,
+      "notes": [],
+      "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
+      "verified_on": "2026-09-09"
+    }
+  ]
+}

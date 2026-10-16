@@ -1,0 +1,46 @@
+{
+  "event": {
+    "name": "NRF 2027: Retail's Big Show",
+    "dates": "10 to 12 January 2027",
+    "anchor": "Jacob K. Javits Convention Center",
+    "anchor_address": "429 11th Ave, New York, NY 10001"
+  },
+  "nights": {
+    "sat": {
+      "key": "sat",
+      "label": "Saturday",
+      "date": "2027-01-09",
+      "date_label": "Saturday, 9 January 2027",
+      "window": "5:00–8:00 PM",
+      "headcount_label": "40–60",
+      "target_min": 40,
+      "target_max": 60,
+      "measure": "standing",
+      "format": "Standing reception, food stations and cocktails",
+      "group": "International colleagues and partners",
+      "verb": "holds",
+      "summary": "Standing reception for 40 to 60. Food stations and cocktails, 5 to 8 PM."
+    },
+    "sun": {
+      "key": "sun",
+      "label": "Sunday",
+      "date": "2027-01-10",
+      "date_label": "Sunday, 10 January 2027",
+      "window": "Cocktails 6:00–6:30, dinner 6:30–9:00",
+      "headcount_label": "30–35",
+      "target_min": 30,
+      "target_max": 35,
+      "measure": "seated",
+      "format": "Seated dinner in a private space, opening with cocktails",
+      "group": "Senior Executives",
+      "verb": "seats",
+      "summary": "Seated executive dinner for 30 to 35. Cocktails at 6, dinner 6:30 to 9.",
+      "steer": "Sunday should feel like Nubeluz at the Ritz-Carlton NoMad. Elevated, a sense of occasion, ideally a view, without that price point."
+    }
+  },
+  "sender": {
+    "name": "Garvit Sindhwani",
+    "email": "garvit.sindhwani@impactanalytics.co",
+    "company": "Impact Analytics"
+  }
+}
