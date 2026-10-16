@@ -10,9 +10,13 @@ const venues: Venue[] = JSON.parse(readFileSync(new URL('../data/venues.json', i
 const v = (id: string) => venues.find(x => x.id === id)!;
 const { sat, sun } = brief.nights;
 
-test('dataset has 38 venues ordered by distance with unique ids', () => {
-  assert.equal(venues.length, 38);
-  assert.equal(new Set(venues.map(x => x.id)).size, 38);
+test('dataset has 42 venues ordered by distance with unique ids', () => {
+  assert.equal(venues.length, 42);
+  assert.equal(new Set(venues.map(x => x.id)).size, 42);
+  for (let i = 1; i < venues.length; i++) {
+    const a = venues[i - 1].travel, b = venues[i].travel;
+    assert.ok(a.mode === b.mode ? a.minutes <= b.minutes : a.mode === 'walk', `${venues[i].id} is out of distance order`);
+  }
   assert.deepEqual(venues.map(x => x.order), venues.map((_, i) => i + 1));
 });
 
@@ -52,6 +56,31 @@ test('Standing fit uses the standing figure', () => {
   const f = computeFit(v('ci-siamo'), sat);
   assert.equal(f.capacity, 75);
   assert.match(f.basis, /standing/);
+});
+
+test('A capacity confirmed by the venue overrides research', () => {
+  const f = computeFit(v('gramercy-tavern'), sun);
+  assert.equal(f.verdict, 'too_small');
+  assert.equal(f.capacity, 20);
+  assert.match(f.basis, /confirmed by the venue/);
+});
+
+test("L'Artusi reaches Sunday on its confirmed 55-guest buyout", () => {
+  assert.equal(computeFit(v('lartusi'), sun).verdict, 'buyout');
+});
+
+test('Venues with no capacity on file read as unknown, not as a fit', () => {
+  for (const id of ['union-square-cafe', 'daniel', 'zaytinya']) assert.equal(computeFit(v(id), sun).verdict, 'unknown');
+});
+
+test('Every seed record names a real venue on a night it is offered', () => {
+  const seed = JSON.parse(readFileSync(new URL('../data/outreach-seed.json', import.meta.url), 'utf8'));
+  assert.equal(seed.records.length, 13);
+  for (const r of seed.records) {
+    assert.ok(v(r.venue_id), `unknown venue ${r.venue_id}`);
+    assert.ok(v(r.venue_id).nights.includes(r.night), `${r.venue_id} not offered on ${r.night}`);
+    assert.ok(['not_contacted', 'sent', 'replied', 'quoted', 'declined', 'booked'].includes(r.status));
+  }
 });
 
 const expectedSunday = `Hello Amali events team,

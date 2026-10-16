@@ -153,7 +153,7 @@ export default function Board({ venues, brief }: { venues: Venue[]; brief: Brief
       const m = meta[v.id];
       const status = r?.status ?? 'not_contacted';
       if (q) {
-        const hay = [v.name, v.area, v.contact.email ?? '', m?.email_override ?? '', ...v.rooms.map(x => x.name), r?.notes ?? ''].join(' ').toLowerCase();
+        const hay = [v.name, v.area, v.specialty ?? '', v.contact.email ?? '', m?.email_override ?? '', ...v.rooms.map(x => x.name), r?.notes ?? ''].join(' ').toLowerCase();
         if (!hay.includes(q)) return false;
       }
       if (f.status === 'follow_up') { if (!followUpDue(r)) return false; }
@@ -183,7 +183,10 @@ export default function Board({ venues, brief }: { venues: Venue[]; brief: Brief
       capacity: (a, b) => (fitOf.get(b.id)!.capacity ?? -1) - (fitOf.get(a.id)!.capacity ?? -1),
       recognition: (a, b) => (b.awards.michelin_stars * 2 + +b.awards.james_beard) - (a.awards.michelin_stars * 2 + +a.awards.james_beard) || a.order - b.order,
       progress: (a, b) => STATUS_RANK[outreach[okey(a.id, f.night)]?.status ?? 'not_contacted'] - STATUS_RANK[outreach[okey(b.id, f.night)]?.status ?? 'not_contacted'] || a.order - b.order,
-      quote: (a, b) => (outreach[okey(a.id, f.night)]?.all_in ?? Infinity) - (outreach[okey(b.id, f.night)]?.all_in ?? Infinity) || a.order - b.order,
+      quote: (a, b) => {
+        const c = (v: Venue) => { const r = outreach[okey(v.id, f.night)]; return r?.all_in ?? r?.fb_minimum ?? Infinity; };
+        return c(a) - c(b) || a.order - b.order;
+      },
       name: (a, b) => a.name.localeCompare(b.name),
     };
     return list.sort(cmp[f.sort]);
@@ -402,7 +405,7 @@ export default function Board({ venues, brief }: { venues: Venue[]; brief: Brief
 
       <footer className="foot">
         <div className="wrap">
-          <span>Capacities come from search-indexed venue pages, checked September 2026. Nothing is confirmed until a venue replies.</span>
+          <span>Capacities come from search-indexed venue pages, checked September 2026, unless marked as confirmed by the venue.</span>
           <span>RFPs send from {brief.sender.email} via Gmail. No mail leaves this server.</span>
         </div>
       </footer>

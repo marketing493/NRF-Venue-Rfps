@@ -1,8 +1,12 @@
 import { neon, neonConfig, type NeonQueryFunction } from '@neondatabase/serverless';
-import type { ActivityItem, AppState, MetaPatch, NightKey, OutreachPatch, OutreachRecord, VenueMeta } from './types';
+import seedJson from '@/data/outreach-seed.json';
+import type { ActivityItem, AppState, MetaPatch, NightKey, OutreachPatch, OutreachRecord, OutreachSeed, VenueMeta } from './types';
+
+const seed = seedJson as OutreachSeed;
 
 let client: NeonQueryFunction<false, false> | null = null;
 let schemaReady: Promise<void> | null = null;
+let seeded: Promise<void> | null = null;
 
 export function dbConfigured(): boolean {
   return Boolean(process.env.DATABASE_URL);
@@ -72,6 +76,7 @@ async function withSchema<T>(fn: (q: NeonQueryFunction<false, false>) => Promise
     return await fn(sql());
   } catch (err) {
     if (/relation .* does not exist/i.test(String((err as Error)?.message))) {
+      seeded = null; // The database was wiped underneath us; let the import check run again.
       await ensureSchema(true);
       return fn(sql());
     }
@@ -107,7 +112,52 @@ function toMeta(r: Record<string, unknown>): VenueMeta {
   };
 }
 
+/**
+ * Apply data/outreach-seed.json once per database. The claim row is written first,
+ * so concurrent cold starts cannot apply it twice. Status and prices take the sheet's
+ * values; notes are appended so nothing typed on the board is lost.
+ */
+async function applySeed(): Promise<void> {
+  if (!seed.records.length) return;
+  if (!seeded) {
+    seeded = (async () => {
+      const q = sql();
+      const key = `seed:${seed.id}`;
+      const claim = await q`INSERT INTO app_settings (key, value) VALUES (${key}, ${new Date().toISOString()})
+                            ON CONFLICT (key) DO NOTHING RETURNING key`;
+      if (!claim.length) return;
+      try {
+        for (const r of seed.records) {
+          const patch: OutreachPatch = { status: r.status };
+          if (r.fb_minimum != null) patch.fb_minimum = r.fb_minimum;
+          if (r.all_in != null) patch.all_in = r.all_in;
+          if (r.fees != null) patch.fees = r.fees;
+          await patchOutreach(r.venue_id, r.night, patch, 'Sheet import');
+          if (r.notes) {
+            await q`UPDATE outreach SET notes = CASE
+                      WHEN notes IS NULL OR notes = '' THEN ${r.notes}
+                      WHEN position(${r.notes} in notes) > 0 THEN notes
+                      ELSE notes || E'\n\n' || ${r.notes} END
+                    WHERE venue_id = ${r.venue_id} AND night = ${r.night}`;
+          }
+        }
+        await q`INSERT INTO activity (venue_id, night, action, detail, actor)
+                VALUES ('*', NULL, 'import', ${`Imported ${seed.records.length} statuses from ${seed.source}`}, 'Sheet import')`;
+      } catch (err) {
+        await q`DELETE FROM app_settings WHERE key = ${key}`;
+        throw err;
+      }
+    })().catch(err => {
+      seeded = null;
+      throw err;
+    });
+  }
+  return seeded;
+}
+
 export async function getState(): Promise<AppState> {
+  await ensureSchema();
+  await applySeed();
   return withSchema(async q => {
     const [outreach, meta, reset] = await Promise.all([
       q`SELECT * FROM outreach`,

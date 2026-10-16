@@ -71,9 +71,11 @@ export function CompareView({ venues, night, brief, outreach, meta, actions }: P
   const rows = venues
     .filter(v => v.nights.includes(night))
     .map(v => ({ v, r: outreach[okey(v.id, night)], m: meta[v.id], f: computeFit(v, n) }))
-    .filter(x => x.m?.starred || (x.r && x.r.status !== 'not_contacted' && x.r.status !== 'sent') || x.r?.all_in != null)
-    .sort((a, b) => (a.r?.all_in ?? Infinity) - (b.r?.all_in ?? Infinity) || a.v.order - b.v.order);
-  const priced = rows.map(x => x.r?.all_in).filter((x): x is number => x != null);
+    .filter(x => x.m?.starred || (x.r && x.r.status !== 'not_contacted' && x.r.status !== 'sent') || x.r?.all_in != null || x.r?.fb_minimum != null)
+    // Rank on the all-in figure when we have one, otherwise on the F&B minimum the venue quoted.
+    .map(x => ({ ...x, cost: x.r?.all_in ?? x.r?.fb_minimum ?? null }))
+    .sort((a, b) => (a.cost ?? Infinity) - (b.cost ?? Infinity) || a.v.order - b.v.order);
+  const priced = rows.map(x => x.cost).filter((x): x is number => x != null);
   const max = Math.max(1, ...priced);
   const min = priced.length ? Math.min(...priced) : null;
 
@@ -87,14 +89,14 @@ export function CompareView({ venues, night, brief, outreach, meta, actions }: P
   }
   return (
     <>
-      <p className="compare-note">Shortlisted venues and every venue that replied for {n.label}, cheapest all-in first. Per guest assumes {n.target_max} guests.</p>
+      <p className="compare-note">Shortlisted venues and every venue that replied for {n.label}, cheapest first. Ranked on the all-in estimate where logged, otherwise the F&amp;B minimum. Per guest assumes {n.target_max} guests.</p>
       <div className="table-wrap">
         <table className="t">
           <thead>
             <tr><th>Venue</th><th>Fit</th><th>Status</th><th className="num">F&amp;B minimum</th><th className="num">All-in</th><th className="num">Per guest</th><th>Cost</th><th>Fees and terms</th></tr>
           </thead>
           <tbody>
-            {rows.map(({ v, r, m, f }) => (
+            {rows.map(({ v, r, m, f, cost }) => (
               <tr key={v.id}>
                 <td>
                   <div className="name" onClick={() => actions.open(v.id)}>{m?.starred ? '★ ' : ''}{v.name}</div>
@@ -104,9 +106,9 @@ export function CompareView({ venues, night, brief, outreach, meta, actions }: P
                 <td><span className={`status-sel s-${r?.status ?? 'not_contacted'}`} style={{ display: 'inline-flex', alignItems: 'center', backgroundImage: 'none', paddingRight: 12 }}>{STATUS_LABEL[r?.status ?? 'not_contacted']}</span></td>
                 <td className="num">{money(r?.fb_minimum) || <span className="muted">·</span>}</td>
                 <td className="num"><b style={{ fontWeight: 500 }}>{money(r?.all_in) || <span className="muted">·</span>}</b></td>
-                <td className="num">{r?.all_in ? money(r.all_in / n.target_max) : <span className="muted">·</span>}</td>
-                <td>{r?.all_in != null && <div className={`qbar${r.all_in === min ? ' best' : ''}`}><span style={{ width: `${(r.all_in / max) * 100}%` }} /></div>}</td>
-                <td className="muted" style={{ maxWidth: 260 }}>{r?.fees || (r?.notes ? r.notes.slice(0, 120) : '')}</td>
+                <td className="num">{cost ? <>{money(cost / n.target_max)}{r?.all_in == null && <div className="muted">from minimum</div>}</> : <span className="muted">·</span>}</td>
+                <td>{cost != null && <div className={`qbar${cost === min ? ' best' : ''}`}><span style={{ width: `${(cost / max) * 100}%` }} /></div>}</td>
+                <td className="muted" style={{ maxWidth: 300 }} title={[r?.fees, r?.notes].filter(Boolean).join('\n\n')}>{[r?.fees, r?.notes].filter(Boolean).join(' · ').slice(0, 220)}</td>
               </tr>
             ))}
           </tbody>

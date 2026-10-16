@@ -18,10 +18,15 @@ interface Reading { value: number; basis: string; approximate: boolean }
 
 /** The capacity of a room for the night's measure, plus how that number was reached. */
 export function readCapacity(
-  r: Pick<Room, 'seated' | 'standing' | 'approximate' | 'single_figure'>,
+  r: Pick<Room, 'seated' | 'standing' | 'approximate' | 'single_figure' | 'confirmed'>,
   measure: Night['measure'],
 ): Reading | null {
   const approx = r.approximate;
+  if (r.confirmed) {
+    // A figure from the venue itself. Use it as stated; never stretch a seated number into a standing one.
+    const v = measure === 'standing' ? (r.standing ?? (r.single_figure ? r.seated : null)) : r.seated;
+    return v == null ? null : { value: v, basis: `confirmed by the venue${r.single_figure ? ', format not stated' : ''}`, approximate: false };
+  }
   const pre = approx ? 'approximate ' : '';
   if (measure === 'standing') {
     if (r.standing != null && !r.single_figure) return { value: r.standing, basis: `${pre}published standing figure`, approximate: approx };
@@ -77,7 +82,9 @@ export function computeFit(venue: Venue, night: Night): Fit {
   }
   if (!cands.length) {
     return { verdict: 'unknown', room: null, capacity: null, basis: '', approximate: false, oversized: false,
-      explanation: `No ${noun} figure published for any room. Ask in the RFP.` };
+      explanation: venue.rooms.length || venue.buyout.seated || venue.buyout.standing
+        ? `No ${noun} figure published for any room. Ask in the RFP.`
+        : 'No capacity on file yet. Confirm the room and headcount with the venue.' };
   }
   cands.sort((a, b) => {
     const r = VERDICT_RANK[a.verdict] - VERDICT_RANK[b.verdict];

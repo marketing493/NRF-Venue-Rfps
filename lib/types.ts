@@ -32,6 +32,8 @@ export interface Room {
   single_figure: boolean;
   /** The room is the whole restaurant, so booking it is a buyout. */
   exclusive: boolean;
+  /** The figure came from the venue itself, so it supersedes research. */
+  confirmed?: boolean;
 }
 
 export interface Buyout {
@@ -39,6 +41,7 @@ export interface Buyout {
   standing: number | null;
   approximate: boolean;
   single_figure: boolean;
+  confirmed?: boolean;
 }
 
 export interface Venue {
@@ -54,6 +57,8 @@ export interface Venue {
   rooms: Room[];
   buyout: Buyout;
   highlight: string | null;
+  /** Why the venue is on the list, in one or two sentences. */
+  specialty: string | null;
   notes: string[];
   capacity_source: string;
   verified_on: string;
@@ -110,6 +115,22 @@ export interface AppState {
   reset_at: string | null;
   outreach: OutreachRecord[];
   meta: VenueMeta[];
+}
+
+export interface SeedRecord {
+  venue_id: string;
+  night: NightKey;
+  status: Status;
+  fb_minimum?: number;
+  all_in?: number;
+  fees?: string;
+  notes?: string;
+}
+
+export interface OutreachSeed {
+  id: string;
+  source: string;
+  records: SeedRecord[];
 }
 
 export type OutreachPatch = Partial<Pick<OutreachRecord, 'status' | 'fb_minimum' | 'all_in' | 'fees' | 'notes' | 'sent_at'>>;

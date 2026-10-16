@@ -1,7 +1,10 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { AppState, MetaPatch, NightKey, OutreachPatch, OutreachRecord, VenueMeta } from './types';
+import seedJson from '@/data/outreach-seed.json';
+import type { AppState, MetaPatch, NightKey, OutreachPatch, OutreachRecord, OutreachSeed, VenueMeta } from './types';
+
+const seed = seedJson as OutreachSeed;
 
 export type Sync = 'loading' | 'synced' | 'saving' | 'local' | 'offline' | 'error';
 
@@ -14,9 +17,11 @@ interface Mirror {
   /** Writes the server has not acknowledged yet, keyed like the timers. Replayed on next load. */
   pending: Record<string, { kind: 'outreach' | 'meta'; venue: string; night?: NightKey; patch: Record<string, unknown> }>;
   reset_at: string | null;
+  /** Seed files already applied in browser-only mode. */
+  seeds?: string[];
 }
 
-const emptyMirror = (): Mirror => ({ outreach: {}, meta: {}, pending: {}, reset_at: null });
+const emptyMirror = (): Mirror => ({ outreach: {}, meta: {}, pending: {}, reset_at: null, seeds: [] });
 
 function readMirror(): Mirror {
   try {
@@ -130,7 +135,19 @@ export function useTracker() {
     setDb(state.db);
     const m = mirror.current;
     if (!state.db) {
-      // No database: the browser mirror is the source of truth.
+      // No database: the browser mirror is the source of truth. Apply the sheet import once here too.
+      if (!(m.seeds ?? []).includes(seed.id)) {
+        const now = new Date().toISOString();
+        for (const r of seed.records) {
+          const k = okey(r.venue_id, r.night);
+          const base = m.outreach[k] ?? blankRecord(r.venue_id, r.night);
+          const notes = !base.notes ? r.notes ?? null : r.notes && !base.notes.includes(r.notes) ? `${base.notes}\n\n${r.notes}` : base.notes;
+          m.outreach[k] = { ...base, status: r.status, fb_minimum: r.fb_minimum ?? base.fb_minimum, all_in: r.all_in ?? base.all_in,
+            fees: r.fees ?? base.fees, notes, updated_at: now, updated_by: 'Sheet import' };
+        }
+        m.seeds = [...(m.seeds ?? []), seed.id];
+        persist();
+      }
       setOutreach({ ...m.outreach });
       setMeta({ ...m.meta });
       setSync('local');

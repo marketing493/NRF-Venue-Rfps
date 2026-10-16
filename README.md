@@ -1,7 +1,7 @@
 # NRF 2027 Venue RFPs
 
 An outreach board for two Impact Analytics evenings around NRF 2027 (Javits Center, 10 to 12 January 2027).
-38 researched New York venues, ranked by distance from Javits. One click per venue opens a prefilled Gmail
+42 New York venues, ranked by distance from Javits. One click per venue opens a prefilled Gmail
 draft. Status, quotes, notes and the shortlist are stored in Neon Postgres and shared by everyone using the board.
 
 | | |
@@ -69,6 +69,9 @@ npm test                      # fit calculation, email wording and Gmail URL
 - **The brief** (dates, headcounts, timing, sender) lives in `data/brief.json`. Change it there and every badge and email follows.
 - **Venues** live in `data/venues.json`. Each room has `seated`, `standing`, `approximate`, `single_figure` and `exclusive`.
   Keep private-room figures and buyout figures separate. Record the source and the date you checked.
+- **Bulk status updates** go in `data/outreach-seed.json`. Give the file a new `id` and deploy: on the next page load the
+  server applies it once (status and prices overwrite, notes are appended), logs it in Activity, and never applies that `id` again.
+  A room or buyout marked `"confirmed": true` came from the venue itself and overrides research in the fit badge.
 - **The email wording** is in `lib/mailer.ts`. `tests/fit.test.ts` holds the expected text, so any change is deliberate.
 
 ## Known limits

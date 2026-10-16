@@ -151,10 +151,11 @@ export function Drawer({ venue, brief, night, outreach, meta, activity, onClose,
           </div>
         </div>
 
-        {(venue.highlight || venue.notes.length > 0) && (
+        {(venue.highlight || venue.specialty || venue.notes.length > 0) && (
           <section className="d-sec">
             <h4>What we know</h4>
             {venue.highlight && <p className="callout">{venue.highlight}</p>}
+            {venue.specialty && <p>{venue.specialty}</p>}
             <ul className="notes-list">{venue.notes.map((t, i) => <li key={i}>{t}</li>)}</ul>
           </section>
         )}
@@ -181,14 +182,17 @@ export function Drawer({ venue, brief, night, outreach, meta, activity, onClose,
             <tbody>
               {venue.rooms.map(r => (
                 <tr key={r.name}>
-                  <td>{r.name}{r.exclusive && <span className="flag">Buyout only</span>}{r.approximate && <span className="flag">Approximate</span>}{r.single_figure && <span className="flag">Format not stated</span>}</td>
+                  <td>{r.name}{r.confirmed && <span className="flag">Confirmed by venue</span>}{r.exclusive && <span className="flag">Buyout only</span>}{r.approximate && <span className="flag">Approximate</span>}{r.single_figure && <span className="flag">Format not stated</span>}</td>
                   <td>{r.seated != null ? `${r.approximate ? '~' : ''}${r.seated}` : '·'}</td>
                   <td>{r.standing != null ? `${r.approximate ? '~' : ''}${r.standing}` : '·'}</td>
                 </tr>
               ))}
+              {!venue.rooms.length && !venue.buyout.seated && !venue.buyout.standing && (
+                <tr><td colSpan={3}>No capacity on file yet. Confirm the room and headcount with the venue.</td></tr>
+              )}
               {(venue.buyout.seated || venue.buyout.standing) && (
                 <tr>
-                  <td>Full restaurant buyout{venue.buyout.single_figure && <span className="flag">Format not stated</span>}</td>
+                  <td>Full restaurant buyout{venue.buyout.confirmed && <span className="flag">Confirmed by venue</span>}{venue.buyout.single_figure && <span className="flag">Format not stated</span>}</td>
                   <td colSpan={venue.buyout.single_figure ? 2 : 1}>{formatRoom({ ...venue.buyout, name: '', exclusive: true }).split('·')[0]}</td>
                   {!venue.buyout.single_figure && <td>{venue.buyout.approximate ? '~' : ''}{venue.buyout.standing}</td>}
                 </tr>

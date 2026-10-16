@@ -64,6 +64,7 @@ function VenueCardInner({ venue, night, brief, record, meta, actions }: {
         <div className="card-title">
           <h3 onClick={() => actions.open(venue.id)}>{venue.name}</h3>
           <div className="sub"><span>{venue.area}</span><span className="sep" /><span>{otherNight}</span></div>
+          {venue.specialty && <p className="specialty" title={venue.specialty}>{venue.specialty}</p>}
         </div>
 
         <div className="fit" title={fit.explanation}>
@@ -81,10 +82,11 @@ function VenueCardInner({ venue, night, brief, record, meta, actions }: {
         </div>
 
         <div className="rooms" aria-label="Rooms, seated and standing">
+          {!venue.rooms.length && !venue.buyout.seated && !venue.buyout.standing && <span className="room">Capacity not on file yet</span>}
           {venue.rooms.map(r => (
             <span key={r.name} className={`room${r.name === fit.room ? ' judged' : ''}${r.exclusive ? ' excl' : ''}`}
-              title={r.exclusive ? 'Whole restaurant: booking it is a buyout' : r.single_figure ? 'One figure published, format not stated' : 'Seated · standing'}>
-              {r.name} <b>{formatRoom(r)}</b>
+              title={r.confirmed ? 'Confirmed by the venue' : r.exclusive ? 'Whole restaurant: booking it is a buyout' : r.single_figure ? 'One figure published, format not stated' : 'Seated · standing'}>
+              {r.name} <b>{formatRoom(r)}</b>{r.confirmed && ' ✓'}
             </span>
           ))}
           {(venue.buyout.seated || venue.buyout.standing) && (
@@ -117,7 +119,8 @@ function VenueCardInner({ venue, night, brief, record, meta, actions }: {
               onChange={e => actions.setStatus(venue.id, night, e.target.value as Status)}>
               {STATUSES.map(s => <option key={s} value={s}>{STATUS_LABEL[s]}</option>)}
             </select>
-            {record?.all_in != null && <span className="quote-pill" title="All-in estimate">{money(record.all_in)}</span>}
+            {record?.all_in != null ? <span className="quote-pill" title="All-in estimate">{money(record.all_in)}</span>
+              : record?.fb_minimum != null && <span className="quote-pill" title="F&B minimum">Min {money(record.fb_minimum)}</span>}
             <span className="grow" />
             <button className="btn xs" disabled={!offered} aria-pressed={sent}
               onClick={() => actions.toggleSent(venue.id, night)}
