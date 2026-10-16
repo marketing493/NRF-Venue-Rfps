@@ -2,6 +2,7 @@ import { brief, venues } from '@/lib/data';
 import { dbConfigured, getState } from '@/lib/db';
 import { computeFit, VERDICT_LABEL } from '@/lib/fit';
 import type { AppState } from '@/lib/types';
+import { STATUS_LABEL } from '@/lib/ui';
 
 export const dynamic = 'force-dynamic';
 
@@ -27,7 +28,7 @@ export async function GET(req: Request) {
       email: m?.email_override || v.contact.email || 'Contact form',
       michelin_stars: v.awards.michelin_stars || '', james_beard: v.awards.james_beard ? 'Yes' : '',
       fit: VERDICT_LABEL[fit.verdict], fit_room: fit.room ?? '', fit_capacity: fit.capacity ?? '', fit_basis: fit.basis,
-      shortlisted: m?.starred ? 'Yes' : '', status: o?.status ?? 'not_contacted', sent_at: o?.sent_at ?? '',
+      shortlisted: m?.starred ? 'Yes' : '', rfp_sent: o && o.status !== 'not_contacted' ? 'Yes' : 'No', status: STATUS_LABEL[o?.status ?? 'not_contacted'], sent_at: o?.sent_at ?? '',
       fb_minimum: o?.fb_minimum ?? '', all_in: o?.all_in ?? '',
       per_head: o?.all_in ? Math.round(o.all_in / night.target_max) : '',
       fees: o?.fees ?? '', notes: o?.notes ?? '', updated_by: o?.updated_by ?? '', updated_at: o?.updated_at ?? '',

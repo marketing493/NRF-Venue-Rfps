@@ -353,7 +353,7 @@ export default function Board({ venues, brief }: { venues: Venue[]; brief: Brief
             <option value="replied">Replied</option>
             <option value="quoted">Quote in</option>
             <option value="booked">Booked</option>
-            <option value="declined">Declined</option>
+            <option value="declined">Unavailable</option>
           </select>
           <select className={`select${f.fit !== 'all' ? ' active' : ''}`} value={f.fit} onChange={e => set('fit', e.target.value)} aria-label="Fit filter">
             <option value="all">Any fit</option>

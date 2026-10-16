@@ -5,7 +5,7 @@ export const STATUS_LABEL: Record<Status, string> = {
   sent: 'Awaiting reply',
   replied: 'Replied',
   quoted: 'Quote in',
-  declined: 'Declined',
+  declined: 'Unavailable',
   booked: 'Booked',
 };
 

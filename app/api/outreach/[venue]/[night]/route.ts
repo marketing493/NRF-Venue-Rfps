@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 
 const STATUS_WORD: Record<string, string> = {
   not_contacted: 'Marked not contacted', sent: 'RFP sent', replied: 'Venue replied',
-  quoted: 'Quote received', declined: 'Venue declined', booked: 'Booked',
+  quoted: 'Quote received', declined: 'Venue unavailable', booked: 'Booked',
 };
 
 function describe(p: OutreachPatch): { action: string; detail: string | null } | null {

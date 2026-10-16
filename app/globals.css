@@ -199,7 +199,6 @@ main { padding: 28px 0 80px; }
 .sb-quoted { background: var(--blue); color: var(--white); }
 .sb-booked { background: var(--green); color: var(--ink); }
 .sb-declined { background: var(--ink); color: rgba(255,255,255,.75); }
-.sb-declined .sb-label { text-decoration: line-through; text-decoration-thickness: 1px; }
 .sb-off { background: var(--g1); color: var(--ink-3); }
 .card-body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 14px; flex: 1; }
 .card-title h3 { font-size: 26px; line-height: 1.12; cursor: pointer; }
@@ -239,7 +238,7 @@ main { padding: 28px 0 80px; }
 .s-replied { background-color: var(--blue-soft); border-color: var(--blue-soft); }
 .s-quoted { background-color: var(--blue); border-color: var(--blue); color: var(--white); background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23FFFFFF' fill='none' stroke-width='1.4'/%3E%3C/svg%3E"); }
 .s-booked { background-color: var(--green); border-color: var(--green); }
-.s-declined { background-color: var(--g1); color: var(--ink-3); text-decoration: line-through; }
+.s-declined { background-color: var(--g1); color: var(--ink-2); }
 .meta-line { font-size: 12px; color: var(--ink-2); display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
 .due { color: #b54500; font-weight: 500; display: inline-flex; align-items: center; gap: 5px; }
 .due::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
