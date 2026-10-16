@@ -5,7 +5,7 @@ import { computeFit, formatRoom, VERDICT_LABEL } from '@/lib/fit';
 import { buildDraft } from '@/lib/mailer';
 import type { Brief, NightKey, OutreachRecord, Status, Venue, VenueMeta } from '@/lib/types';
 import { STATUSES } from '@/lib/types';
-import { followUpDue, money, searchUrl, shortDate, STATUS_LABEL, travelLabel } from '@/lib/ui';
+import { followUpDue, money, searchUrl, shortDate, STATUS_LABEL, statusDetail, travelLabel } from '@/lib/ui';
 import { CoverArt } from './Cover';
 import { ICheck, IEye, IForm, IMail, ISend, IStar } from './Icons';
 
@@ -58,6 +58,11 @@ function VenueCardInner({ venue, night, brief, record, meta, actions }: {
           <span className="tag glassy">{travelLabel(venue)}</span>
           {venue.highlight && <span className="tag pick">{venue.highlight}</span>}
         </div>
+      </div>
+
+      <div className={`status-band sb-${offered ? status : 'off'}${due ? ' sb-due' : ''}`} role="status">
+        <span className="sb-label">{offered ? STATUS_LABEL[status] : `Not offered ${n.label}`}</span>
+        {offered && <span className="sb-detail">{statusDetail(record)}</span>}
       </div>
 
       <div className="card-body">

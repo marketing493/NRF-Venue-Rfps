@@ -15,10 +15,10 @@ import { VenueCard, type CardActions } from './VenueCard';
 type View = 'cards' | 'list' | 'compare';
 type SortKey = 'distance' | 'fit' | 'capacity' | 'recognition' | 'progress' | 'quote' | 'name';
 interface Filters {
-  night: NightKey; q: string; status: string; fit: string; recognition: string; contact: string;
+  night: NightKey; q: string; rfp: string; status: string; fit: string; recognition: string; contact: string;
   walk: boolean; starred: boolean; hideOff: boolean; sort: SortKey; view: View;
 }
-const DEFAULTS: Filters = { night: 'sat', q: '', status: 'all', fit: 'all', recognition: 'all', contact: 'all', walk: false, starred: false, hideOff: true, sort: 'distance', view: 'cards' };
+const DEFAULTS: Filters = { night: 'sat', q: '', rfp: 'all', status: 'all', fit: 'all', recognition: 'all', contact: 'all', walk: false, starred: false, hideOff: true, sort: 'distance', view: 'cards' };
 const VIEW_KEY = 'nrf-rfp-view-v1';
 
 const SYNC_LABEL: Record<Sync, string> = {
@@ -176,6 +176,8 @@ export default function Board({ venues, brief }: { venues: Venue[]; brief: Brief
         const hay = [v.name, v.area, v.specialty ?? '', v.contact.email ?? '', m?.email_override ?? '', ...v.rooms.map(x => x.name), r?.notes ?? ''].join(' ').toLowerCase();
         if (!hay.includes(q)) return false;
       }
+      if (f.rfp === 'yes' && !wasSent(status)) return false;
+      if (f.rfp === 'no' && wasSent(status)) return false;
       if (f.status === 'follow_up') { if (!followUpDue(r)) return false; }
       else if (f.status !== 'all' && status !== f.status) return false;
       if (f.fit !== 'all') {
@@ -212,7 +214,7 @@ export default function Board({ venues, brief }: { venues: Venue[]; brief: Brief
     return list.sort(cmp[f.sort]);
   }, [venues, outreach, meta, f, night]);
 
-  const filtersActive = f.q || f.status !== 'all' || f.fit !== 'all' || f.recognition !== 'all' || f.contact !== 'all' || f.walk || f.starred;
+  const filtersActive = f.q || f.rfp !== 'all' || f.status !== 'all' || f.fit !== 'all' || f.recognition !== 'all' || f.contact !== 'all' || f.walk || f.starred;
   const offeredCount = venues.filter(v => v.nights.includes(f.night)).length;
 
   // ----- Top bar actions -----
@@ -338,10 +340,15 @@ export default function Board({ venues, brief }: { venues: Venue[]; brief: Brief
             <ISearch />
             <input type="search" placeholder="Search venue, area, room, notes" value={f.q} onChange={e => set('q', e.target.value)} aria-label="Search venues" />
           </div>
+          <select className={`select${f.rfp !== 'all' ? ' active' : ''}`} value={f.rfp} onChange={e => set('rfp', e.target.value)} aria-label="RFP sent filter">
+            <option value="all">RFP sent: any</option>
+            <option value="yes">RFP sent: yes</option>
+            <option value="no">RFP sent: no</option>
+          </select>
           <select className={`select${f.status !== 'all' ? ' active' : ''}`} value={f.status} onChange={e => set('status', e.target.value)} aria-label="Status filter">
             <option value="all">Any status</option>
             <option value="not_contacted">Not contacted</option>
-            <option value="sent">RFP sent</option>
+            <option value="sent">Awaiting reply</option>
             <option value="follow_up">Follow-up due</option>
             <option value="replied">Replied</option>
             <option value="quoted">Quote in</option>

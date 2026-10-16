@@ -2,12 +2,22 @@ import type { OutreachRecord, Status, Venue } from './types';
 
 export const STATUS_LABEL: Record<Status, string> = {
   not_contacted: 'Not contacted',
-  sent: 'RFP sent',
+  sent: 'Awaiting reply',
   replied: 'Replied',
   quoted: 'Quote in',
   declined: 'Declined',
   booked: 'Booked',
 };
+
+/** Short line under the status band: the fact that matters most for that status. */
+export function statusDetail(r: OutreachRecord | undefined): string {
+  if (!r || r.status === 'not_contacted') return 'RFP not sent yet';
+  const sent = r.sent_at ? `RFP sent ${shortDate(r.sent_at)}` : 'RFP sent';
+  const price = r.all_in != null ? `${money(r.all_in)} all-in` : r.fb_minimum != null ? `${money(r.fb_minimum)} minimum` : '';
+  if (r.status === 'quoted' || r.status === 'booked') return price || sent;
+  if (r.status === 'sent' && followUpDue(r)) return `${sent} · follow up due`;
+  return sent;
+}
 
 export const FOLLOW_UP_DAYS = 4;
 

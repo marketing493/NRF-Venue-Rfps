@@ -23,7 +23,7 @@ export function ListView({ venues, night, brief, outreach, meta, actions }: Prop
           <tr>
             <th aria-label="Shortlist" />
             <th>Venue</th><th>From Javits</th><th>Recognition</th><th>{n.label} fit</th><th>Judged on</th>
-            <th>Contact</th><th>Status</th><th className="num">All-in</th><th />
+            <th>Contact</th><th>RFP sent</th><th>Status</th><th className="num">All-in</th><th />
           </tr>
         </thead>
         <tbody>
@@ -43,6 +43,7 @@ export function ListView({ venues, night, brief, outreach, meta, actions }: Prop
                 <td title={f.explanation}><span className={`badge v-${f.verdict}`}>{VERDICT_LABEL[f.verdict]}</span></td>
                 <td className="muted">{f.room ? `${f.room} · ${f.approximate ? '~' : ''}${f.capacity}` : ''}</td>
                 <td className="muted" style={{ maxWidth: 220, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{email ?? 'Events form'}</td>
+                <td className="muted">{r && r.status !== 'not_contacted' ? `Yes${r.sent_at ? `, ${shortDate(r.sent_at)}` : ''}` : 'No'}</td>
                 <td>
                   <select className={`status-sel s-${r?.status ?? 'not_contacted'}`} value={r?.status ?? 'not_contacted'} disabled={!offered}
                     aria-label={`Status for ${v.name}`} onChange={e => actions.setStatus(v.id, night, e.target.value as Status)}>
