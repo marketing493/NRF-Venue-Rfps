@@ -2,9 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import seedJson from '@/data/outreach-seed.json';
-import type { AppState, MetaPatch, NightKey, OutreachPatch, OutreachRecord, OutreachSeed, VenueMeta } from './types';
+import type { AppState, MetaPatch, NightKey, OutreachPatch, OutreachRecord, SeedFile, VenueMeta } from './types';
 
-const seed = seedJson as OutreachSeed;
+const seeds = (seedJson as SeedFile).seeds;
 
 export type Sync = 'loading' | 'synced' | 'saving' | 'local' | 'offline' | 'error';
 
@@ -136,7 +136,8 @@ export function useTracker() {
     const m = mirror.current;
     if (!state.db) {
       // No database: the browser mirror is the source of truth. Apply the sheet import once here too.
-      if (!(m.seeds ?? []).includes(seed.id)) {
+      for (const seed of seeds) {
+        if ((m.seeds ?? []).includes(seed.id)) continue;
         const now = new Date().toISOString();
         for (const r of seed.records) {
           const k = okey(r.venue_id, r.night);

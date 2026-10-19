@@ -10,9 +10,9 @@ const venues: Venue[] = JSON.parse(readFileSync(new URL('../data/venues.json', i
 const v = (id: string) => venues.find(x => x.id === id)!;
 const { sat, sun } = brief.nights;
 
-test('dataset has 42 venues ordered by distance with unique ids', () => {
-  assert.equal(venues.length, 42);
-  assert.equal(new Set(venues.map(x => x.id)).size, 42);
+test('dataset has 44 venues ordered by distance with unique ids', () => {
+  assert.equal(venues.length, 44);
+  assert.equal(new Set(venues.map(x => x.id)).size, 44);
   for (let i = 1; i < venues.length; i++) {
     const a = venues[i - 1].travel, b = venues[i].travel;
     assert.ok(a.mode === b.mode ? a.minutes <= b.minutes : a.mode === 'walk', `${venues[i].id} is out of distance order`);
@@ -74,13 +74,21 @@ test('Venues with no capacity on file read as unknown, not as a fit', () => {
 });
 
 test('Every seed record names a real venue on a night it is offered', () => {
-  const seed = JSON.parse(readFileSync(new URL('../data/outreach-seed.json', import.meta.url), 'utf8'));
-  assert.equal(seed.records.length, 13);
-  for (const r of seed.records) {
+  const file = JSON.parse(readFileSync(new URL('../data/outreach-seed.json', import.meta.url), 'utf8'));
+  assert.deepEqual(file.seeds.map((s: { records: unknown[] }) => s.records.length), [13, 3]);
+  assert.equal(new Set(file.seeds.map((s: { id: string }) => s.id)).size, file.seeds.length);
+  for (const r of file.seeds.flatMap((s: { records: { venue_id: string; night: 'sat' | 'sun'; status: string }[] }) => s.records)) {
     assert.ok(v(r.venue_id), `unknown venue ${r.venue_id}`);
     assert.ok(v(r.venue_id).nights.includes(r.night), `${r.venue_id} not offered on ${r.night}`);
     assert.ok(['not_contacted', 'sent', 'replied', 'quoted', 'declined', 'booked'].includes(r.status));
   }
+});
+
+test('Bazaar Meat fits Sunday on the Tapas section the venue offered', () => {
+  const f = computeFit(v('bazaar-meat'), sun);
+  assert.equal(f.verdict, 'good');
+  assert.equal(f.room, 'Tapas section, Main Dining Room');
+  assert.match(f.basis, /confirmed by the venue/);
 });
 
 const expectedSunday = `Hello Amali events team,

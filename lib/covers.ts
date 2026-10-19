@@ -80,6 +80,21 @@ export async function findCover(v: Venue): Promise<string | null> {
   return null;
 }
 
+export const MAX_PHOTO_BYTES = 3_500_000;
+
+/** Download an image so it can be kept in Neon. Null if it is not an image or is too large to keep. */
+export async function downloadImage(raw: string): Promise<{ type: string; bytes: Uint8Array } | null> {
+  const url = safeImageUrl(raw);
+  if (!url) return null;
+  const res = await get(url.toString(), 'image/*', 10000);
+  if (!res) return null;
+  const type = (res.headers.get('content-type') || '').split(';')[0].trim();
+  if (!type.startsWith('image/') || type === 'image/svg+xml') { await res.body?.cancel().catch(() => {}); return null; }
+  if (Number(res.headers.get('content-length') || 0) > MAX_PHOTO_BYTES) { await res.body?.cancel().catch(() => {}); return null; }
+  const bytes = new Uint8Array(await res.arrayBuffer());
+  return bytes.byteLength && bytes.byteLength <= MAX_PHOTO_BYTES ? { type, bytes } : null;
+}
+
 /** Block requests to obviously internal hosts when relaying a stored image URL. */
 export function safeImageUrl(raw: string): URL | null {
   try {

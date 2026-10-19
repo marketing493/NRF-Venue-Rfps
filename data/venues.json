@@ -810,6 +810,67 @@
       "photo_pages": []
     },
     {
+      "id": "bazaar-meat",
+      "name": "Bazaar Meat by José Andrés",
+      "area": "NoMad",
+      "travel": {
+        "minutes": 13,
+        "mode": "car"
+      },
+      "contact": {
+        "method": "email",
+        "email": "events.nyc@thebazaarbyjose.com"
+      },
+      "website": "https://www.thebazaar.com/private-events-new-york",
+      "photo_pages": [
+        "https://www.opentable.com/r/bazaar-meat-by-jose-andres-new-york"
+      ],
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "rooms": [
+        {
+          "name": "Tapas section, Main Dining Room",
+          "seated": 40,
+          "standing": null,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false,
+          "confirmed": true
+        },
+        {
+          "name": "Private Dining Room",
+          "seated": 14,
+          "standing": null,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        }
+      ],
+      "buyout": {
+        "seated": 50,
+        "standing": 120,
+        "approximate": true,
+        "single_figure": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "highlight": null,
+      "specialty": "Celebrity chef José Andrés's live-fire steakhouse on the second floor of the Ritz-Carlton NoMad, the same hotel as Zaytinya and the Nubeluz rooftop.",
+      "notes": [
+        "The venue offered the Tapas section of the Main Dining Room for groups of up to 40.",
+        "The Private Dining Room is most comfortable at 14 and holds 18 at most.",
+        "Their events page gives two buyout figures: 50 seated in one place, 100 seated in another, and 120 for a reception. Confirm which applies.",
+        "Enquiry went in through their form. The events address from their site is events.nyc@thebazaarbyjose.com, phone (212) 804-9070."
+      ],
+      "capacity_source": "Venue outreach tracker (sheet of 19 October 2026), plus the venue's own private events page.",
+      "verified_on": "2026-10-19",
+      "order": 17
+    },
+    {
       "id": "bad-roman",
       "name": "Bad Roman",
       "area": "Columbus Circle",
@@ -817,7 +878,7 @@
         "minutes": 14,
         "mode": "car"
       },
-      "order": 17,
+      "order": 18,
       "contact": {
         "method": "email",
         "email": "pjadoonanan@qualitybranded.com"
@@ -878,7 +939,7 @@
         "minutes": 14,
         "mode": "car"
       },
-      "order": 18,
+      "order": 19,
       "contact": {
         "method": "email",
         "email": "cmoncrieff@perseny.com"
@@ -926,6 +987,64 @@
       "photo_pages": []
     },
     {
+      "id": "robert",
+      "name": "ROBERT",
+      "area": "Columbus Circle",
+      "travel": {
+        "minutes": 14,
+        "mode": "car"
+      },
+      "contact": {
+        "method": "form",
+        "email": null
+      },
+      "website": null,
+      "photo_pages": [
+        "https://www.opentable.com/robert"
+      ],
+      "awards": {
+        "michelin_stars": 0,
+        "james_beard": false
+      },
+      "rooms": [
+        {
+          "name": "7th Floor event space",
+          "seated": 150,
+          "standing": 180,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": false
+        },
+        {
+          "name": "Main Dining Room",
+          "seated": 180,
+          "standing": 250,
+          "approximate": false,
+          "single_figure": false,
+          "exclusive": true
+        }
+      ],
+      "buyout": {
+        "seated": null,
+        "standing": null,
+        "approximate": false,
+        "single_figure": false
+      },
+      "nights": [
+        "sat",
+        "sun"
+      ],
+      "highlight": null,
+      "specialty": "Modern American dining room on the 9th floor of the Museum of Arts and Design, with views over Columbus Circle and Central Park.",
+      "notes": [
+        "Event enquiries go to the Special Events Department, 212.206.8815.",
+        "Room figures come from event directories (The Vendry, Tripleseat). The 7th Floor space is far larger than our party, so ask how they would scale it down."
+      ],
+      "capacity_source": "Venue outreach tracker (sheet of 19 October 2026), plus The Vendry and Tripleseat listings. Not yet confirmed by the venue.",
+      "verified_on": "2026-10-19",
+      "order": 20
+    },
+    {
       "id": "aquavit",
       "name": "Aquavit",
       "area": "Midtown East",
@@ -933,7 +1052,7 @@
         "minutes": 15,
         "mode": "car"
       },
-      "order": 19,
+      "order": 21,
       "contact": {
         "method": "email",
         "email": "events@aquavit.org"
@@ -989,7 +1108,7 @@
         "minutes": 15,
         "mode": "car"
       },
-      "order": 20,
+      "order": 22,
       "contact": {
         "method": "form",
         "email": null
@@ -1038,7 +1157,7 @@
         "minutes": 15,
         "mode": "car"
       },
-      "order": 21,
+      "order": 23,
       "contact": {
         "method": "email",
         "email": "dbryant@qualitybranded.com"
@@ -1093,7 +1212,7 @@
         "minutes": 15,
         "mode": "car"
       },
-      "order": 22,
+      "order": 24,
       "contact": {
         "method": "email",
         "email": "events@semma.nyc"
@@ -1139,7 +1258,7 @@
         "minutes": 15,
         "mode": "car"
       },
-      "order": 23,
+      "order": 25,
       "contact": {
         "method": "email",
         "email": "info@elevenmadisonpark.com"
@@ -1205,7 +1324,7 @@
         "Offered by Gramercy Tavern as an alternative because Gramercy cannot seat our numbers.",
         "No capacity figure on file yet. Confirm the room and headcount in the reply thread."
       ],
-      "order": 24,
+      "order": 26,
       "nights": [
         "sun"
       ],
@@ -1243,7 +1362,7 @@
       "notes": [
         "The venue quoted a 4-hour full buyout for up to 55 guests."
       ],
-      "order": 25,
+      "order": 27,
       "nights": [
         "sun"
       ],
@@ -1261,7 +1380,7 @@
         "minutes": 16,
         "mode": "car"
       },
-      "order": 26,
+      "order": 28,
       "contact": {
         "method": "email",
         "email": "info@themodernnyc.com"
@@ -1314,7 +1433,7 @@
         "minutes": 16,
         "mode": "car"
       },
-      "order": 27,
+      "order": 29,
       "contact": {
         "method": "email",
         "email": "mareaevents@altamareagroup.com"
@@ -1379,7 +1498,7 @@
         "minutes": 17,
         "mode": "car"
       },
-      "order": 28,
+      "order": 30,
       "contact": {
         "method": "email",
         "email": "reservations@thegrillnewyork.com"
@@ -1432,7 +1551,7 @@
         "minutes": 18,
         "mode": "car"
       },
-      "order": 29,
+      "order": 31,
       "contact": {
         "method": "email",
         "email": "events@jungsik.com"
@@ -1479,7 +1598,7 @@
         "minutes": 18,
         "mode": "car"
       },
-      "order": 30,
+      "order": 32,
       "contact": {
         "method": "email",
         "email": "mquayle@qualitybranded.com"
@@ -1526,7 +1645,7 @@
         "minutes": 18,
         "mode": "car"
       },
-      "order": 31,
+      "order": 33,
       "contact": {
         "method": "form",
         "email": null
@@ -1585,7 +1704,7 @@
         "minutes": 20,
         "mode": "car"
       },
-      "order": 32,
+      "order": 34,
       "contact": {
         "method": "form",
         "email": null
@@ -1630,7 +1749,7 @@
         "minutes": 20,
         "mode": "car"
       },
-      "order": 33,
+      "order": 35,
       "contact": {
         "method": "email",
         "email": "events@saga-nyc.com"
@@ -1675,7 +1794,7 @@
         "minutes": 20,
         "mode": "car"
       },
-      "order": 34,
+      "order": 36,
       "contact": {
         "method": "email",
         "email": "events@crownshy.nyc"
@@ -1714,7 +1833,9 @@
         "single_figure": false
       },
       "highlight": null,
-      "notes": [],
+      "notes": [
+        "A $9,000 food and beverage minimum is on file from the outreach sheet."
+      ],
       "capacity_source": "Search-indexed venue pages and event directories. Not yet confirmed by the venue.",
       "verified_on": "2026-09-09",
       "specialty": null,
@@ -1728,7 +1849,7 @@
         "minutes": 20,
         "mode": "car"
       },
-      "order": 35,
+      "order": 37,
       "contact": {
         "method": "form",
         "email": null
@@ -1797,7 +1918,7 @@
         "minutes": 20,
         "mode": "car"
       },
-      "order": 36,
+      "order": 38,
       "contact": {
         "method": "email",
         "email": "reservations@torrisinyc.com"
@@ -1842,7 +1963,7 @@
         "minutes": 20,
         "mode": "car"
       },
-      "order": 37,
+      "order": 39,
       "contact": {
         "method": "email",
         "email": "hello@kabawa.com"
@@ -1887,7 +2008,7 @@
         "minutes": 20,
         "mode": "car"
       },
-      "order": 38,
+      "order": 40,
       "contact": {
         "method": "email",
         "email": "events@amalinyc.com"
@@ -1951,7 +2072,7 @@
         "minutes": 20,
         "mode": "car"
       },
-      "order": 39,
+      "order": 41,
       "contact": {
         "method": "email",
         "email": "info@tuccinyc.com"
@@ -2023,7 +2144,7 @@
       "notes": [
         "Sent their events deck with pricing. Room capacities are in the deck, not yet on the board."
       ],
-      "order": 40,
+      "order": 42,
       "nights": [
         "sun"
       ],
@@ -2041,7 +2162,7 @@
         "minutes": 22,
         "mode": "car"
       },
-      "order": 41,
+      "order": 43,
       "contact": {
         "method": "email",
         "email": "reservations@freemansrestaurant.com"
@@ -2102,7 +2223,7 @@
         "minutes": 25,
         "mode": "car"
       },
-      "order": 42,
+      "order": 44,
       "contact": {
         "method": "email",
         "email": "events@askanyc.com"

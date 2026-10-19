@@ -1,8 +1,8 @@
 import { neon, neonConfig, type NeonQueryFunction } from '@neondatabase/serverless';
 import seedJson from '@/data/outreach-seed.json';
-import type { ActivityItem, AppState, MetaPatch, NightKey, OutreachPatch, OutreachRecord, OutreachSeed, VenueMeta } from './types';
+import type { ActivityItem, AppState, MetaPatch, NightKey, OutreachPatch, OutreachRecord, OutreachSeed, SeedFile, VenueMeta } from './types';
 
-const seed = seedJson as OutreachSeed;
+const seeds = (seedJson as SeedFile).seeds;
 
 let client: NeonQueryFunction<false, false> | null = null;
 let schemaReady: Promise<void> | null = null;
@@ -62,6 +62,15 @@ export async function ensureSchema(force = false): Promise<void> {
     )`;
     await q`CREATE INDEX IF NOT EXISTS activity_at_idx ON activity (at DESC)`;
     await q`CREATE TABLE IF NOT EXISTS app_settings (key text PRIMARY KEY, value text)`;
+    // The photo bytes themselves, so a cover survives the venue changing or deleting its image.
+    await q`CREATE TABLE IF NOT EXISTS venue_photos (
+      venue_id     text PRIMARY KEY,
+      content_type text NOT NULL,
+      data         text NOT NULL,
+      bytes        integer NOT NULL,
+      source_url   text,
+      updated_at   timestamptz NOT NULL DEFAULT now()
+    )`;
   })().catch(err => {
     schemaReady = null;
     throw err;
@@ -113,46 +122,49 @@ function toMeta(r: Record<string, unknown>): VenueMeta {
 }
 
 /**
- * Apply data/outreach-seed.json once per database. The claim row is written first,
- * so concurrent cold starts cannot apply it twice. Status and prices take the sheet's
- * values; notes are appended so nothing typed on the board is lost.
+ * Apply each sheet in data/outreach-seed.json once per database, oldest first. The claim
+ * row is written first, so concurrent cold starts cannot apply a sheet twice. Status and
+ * prices take the sheet's values; notes are appended so nothing typed on the board is lost.
  */
 async function applySeed(): Promise<void> {
-  if (!seed.records.length) return;
   if (!seeded) {
     seeded = (async () => {
-      const q = sql();
-      const key = `seed:${seed.id}`;
-      const claim = await q`INSERT INTO app_settings (key, value) VALUES (${key}, ${new Date().toISOString()})
-                            ON CONFLICT (key) DO NOTHING RETURNING key`;
-      if (!claim.length) return;
-      try {
-        for (const r of seed.records) {
-          const patch: OutreachPatch = { status: r.status };
-          if (r.fb_minimum != null) patch.fb_minimum = r.fb_minimum;
-          if (r.all_in != null) patch.all_in = r.all_in;
-          if (r.fees != null) patch.fees = r.fees;
-          await patchOutreach(r.venue_id, r.night, patch, 'Sheet import');
-          if (r.notes) {
-            await q`UPDATE outreach SET notes = CASE
-                      WHEN notes IS NULL OR notes = '' THEN ${r.notes}
-                      WHEN position(${r.notes} in notes) > 0 THEN notes
-                      ELSE notes || E'\n\n' || ${r.notes} END
-                    WHERE venue_id = ${r.venue_id} AND night = ${r.night}`;
-          }
-        }
-        await q`INSERT INTO activity (venue_id, night, action, detail, actor)
-                VALUES ('*', NULL, 'import', ${`Imported ${seed.records.length} statuses from ${seed.source}`}, 'Sheet import')`;
-      } catch (err) {
-        await q`DELETE FROM app_settings WHERE key = ${key}`;
-        throw err;
-      }
+      for (const seed of seeds) if (seed.records.length) await applyOneSeed(seed);
     })().catch(err => {
       seeded = null;
       throw err;
     });
   }
   return seeded;
+}
+
+async function applyOneSeed(seed: OutreachSeed): Promise<void> {
+  const q = sql();
+  const key = `seed:${seed.id}`;
+  const claim = await q`INSERT INTO app_settings (key, value) VALUES (${key}, ${new Date().toISOString()})
+                        ON CONFLICT (key) DO NOTHING RETURNING key`;
+  if (!claim.length) return;
+  try {
+    for (const r of seed.records) {
+      const patch: OutreachPatch = { status: r.status };
+      if (r.fb_minimum != null) patch.fb_minimum = r.fb_minimum;
+      if (r.all_in != null) patch.all_in = r.all_in;
+      if (r.fees != null) patch.fees = r.fees;
+      await patchOutreach(r.venue_id, r.night, patch, 'Sheet import');
+      if (r.notes) {
+        await q`UPDATE outreach SET notes = CASE
+                  WHEN notes IS NULL OR notes = '' THEN ${r.notes}
+                  WHEN position(${r.notes} in notes) > 0 THEN notes
+                  ELSE notes || E'\n\n' || ${r.notes} END
+                WHERE venue_id = ${r.venue_id} AND night = ${r.night}`;
+      }
+    }
+    await q`INSERT INTO activity (venue_id, night, action, detail, actor)
+            VALUES ('*', NULL, 'import', ${`Imported ${seed.records.length} statuses from ${seed.source}`}, 'Sheet import')`;
+  } catch (err) {
+    await q`DELETE FROM app_settings WHERE key = ${key}`;
+    throw err;
+  }
 }
 
 export async function getState(): Promise<AppState> {
@@ -226,6 +238,33 @@ export async function patchMeta(venueId: string, patch: MetaPatch): Promise<Venu
       RETURNING *`;
     return toMeta(rows[0]);
   });
+}
+
+export interface StoredPhoto { content_type: string; data: Buffer; source_url: string | null }
+
+export async function getPhoto(venueId: string): Promise<StoredPhoto | null> {
+  return withSchema(async q => {
+    const rows = await q`SELECT content_type, data, source_url FROM venue_photos WHERE venue_id = ${venueId}`;
+    if (!rows[0]) return null;
+    return { content_type: rows[0].content_type as string, data: Buffer.from(rows[0].data as string, 'base64'), source_url: (rows[0].source_url as string) ?? null };
+  });
+}
+
+/** Which venues already have their current cover saved, keyed by venue id → source URL. */
+export async function getPhotoSources(): Promise<Map<string, string | null>> {
+  return withSchema(async q => {
+    const rows = await q`SELECT venue_id, source_url FROM venue_photos`;
+    return new Map(rows.map(r => [r.venue_id as string, (r.source_url as string) ?? null]));
+  });
+}
+
+export async function savePhoto(venueId: string, contentType: string, data: Uint8Array, sourceUrl: string | null): Promise<void> {
+  const b64 = Buffer.from(data).toString('base64');
+  await withSchema(q => q`
+    INSERT INTO venue_photos (venue_id, content_type, data, bytes, source_url, updated_at)
+    VALUES (${venueId}, ${contentType}, ${b64}, ${data.byteLength}, ${sourceUrl}, now())
+    ON CONFLICT (venue_id) DO UPDATE SET content_type = EXCLUDED.content_type, data = EXCLUDED.data,
+      bytes = EXCLUDED.bytes, source_url = EXCLUDED.source_url, updated_at = now()`);
 }
 
 export async function getCoverUrl(venueId: string): Promise<string | null> {

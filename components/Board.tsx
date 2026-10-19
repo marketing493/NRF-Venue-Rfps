@@ -66,13 +66,12 @@ export default function Board({ venues, brief }: { venues: Venue[]; brief: Brief
   }, []);
   useEffect(() => { if (t.db) void loadActivity(); }, [t.db, loadActivity]);
 
-  // First visit after deploy: fetch any missing venue photos on the server and save them in Neon.
+  // On load: find missing venue photos and save a copy of every cover in Neon.
   // The server runs this at most once every six hours, however many people open the board.
   const autoPhotos = useRef(false);
   useEffect(() => {
     if (!t.db || t.sync === 'loading' || autoPhotos.current) return;
     autoPhotos.current = true;
-    if (venues.every(v => meta[v.id]?.cover_url || (!v.website && !v.photo_pages?.length))) return;
     (async () => {
       try {
         const r = await fetch('/api/covers', { method: 'POST', headers: t.headers(), body: JSON.stringify({ auto: true }) });
@@ -230,7 +229,12 @@ export default function Board({ venues, brief }: { venues: Venue[]; brief: Brief
       const j = await r.json();
       if (!r.ok) throw new Error(j.error || 'Photo fetch failed');
       t.applyCovers(j.found);
-      toast(j.checked ? `Found ${Object.keys(j.found).length} of ${j.checked} photos${j.unchecked?.length ? `. Click again for the remaining ${j.unchecked.length}.` : ''}` : 'Every venue already has a photo');
+      const nFound = Object.keys(j.found).length;
+      toast([
+        j.checked ? `Found ${nFound} of ${j.checked} photos` : 'Every venue already has a photo',
+        j.saved ? `saved ${j.saved} to the database` : '',
+        j.unchecked?.length ? `click again for the remaining ${j.unchecked.length}` : '',
+      ].filter(Boolean).join('. ').replace(/\. ([a-z])/g, (_m: string, c: string) => `. ${c.toUpperCase()}`));
     } catch (e) {
       toast((e as Error).message);
     } finally {
@@ -445,7 +449,8 @@ export default function Board({ venues, brief }: { venues: Venue[]; brief: Brief
           onClose={() => setOpenId(null)} update={update}
           updateMeta={(p, d) => { t.updateMeta(openVenue.id, p as Partial<VenueMeta>, d); setTimeout(loadActivity, 1200); }}
           onPreview={n => setPreview({ id: openVenue.id, night: n })}
-          onSent={n => actions.markSent(openVenue.id, n)} />
+          onSent={n => actions.markSent(openVenue.id, n)}
+          onUploaded={m => { t.applyCovers({ [m.venue_id]: m.cover_url! }); toast('Photo saved for everyone'); void loadActivity(); }} />
       )}
       {previewVenue && preview && (
         <DraftModal venue={previewVenue} night={preview.night} brief={brief} meta={meta[previewVenue.id]}

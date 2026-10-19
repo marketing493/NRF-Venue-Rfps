@@ -1,19 +1,122 @@
 {
-  "id": "sheet-2026-10-16-sunday",
-  "source": "Venue outreach tracker (Sunday sheet), 16 October 2026",
-  "records": [
-    { "venue_id": "per-se", "night": "sun", "status": "quoted", "fb_minimum": 9000, "notes": "May be available. On hold for another party; they can check with them if we are interested. Pricing received." },
-    { "venue_id": "le-bernardin", "night": "sun", "status": "sent", "notes": "Awaiting reply. Followed up, no reply yet. Maybe Maggie or Rebecca can call and check." },
-    { "venue_id": "gramercy-tavern", "night": "sun", "status": "replied", "notes": "Available, but private dining only accommodates up to 20 people. Enquiry sent through their form. They suggested Union Square Cafe." },
-    { "venue_id": "union-square-cafe", "night": "sun", "status": "quoted", "fb_minimum": 5000, "notes": "Available. Offered as an option by Gramercy Tavern because Gramercy can't accommodate our numbers. Pricing received." },
-    { "venue_id": "ci-siamo", "night": "sun", "status": "declined", "notes": "Not available." },
-    { "venue_id": "aquavit", "night": "sun", "status": "quoted", "fb_minimum": 20000, "notes": "Available. Closed on Sunday but ready to host a private dinner. Room can accommodate 44 people. Pricing received." },
-    { "venue_id": "cote-korean-steakhouse", "night": "sun", "status": "quoted", "fb_minimum": 60000, "notes": "Available. Replied with options: semi-private only, with a half buyout." },
-    { "venue_id": "jungsik", "night": "sun", "status": "replied", "notes": "Available, but replied that the date is too early to book. Suggested reaching out 6 to 8 weeks in advance." },
-    { "venue_id": "lartusi", "night": "sun", "status": "quoted", "fb_minimum": 20000, "fees": "$20,000 for a 4-hour buyout, up to 55 guests", "notes": "Available. $20,000 for a 4-hour buyout for up to 55 guests." },
-    { "venue_id": "daniel", "night": "sun", "status": "quoted", "fb_minimum": 15000, "notes": "Available. Replied with their events deck attached. Pricing received." },
-    { "venue_id": "the-modern", "night": "sun", "status": "declined", "notes": "Not available. Enquiry sent through their form." },
-    { "venue_id": "zaytinya", "night": "sun", "status": "quoted", "fb_minimum": 6000, "notes": "Available. Offering the full rear section of the restaurant with a mix of banquettes and standalone tables. Need to check the seating capacity. Enquiry sent through their form." },
-    { "venue_id": "eleven-madison-park", "night": "sun", "status": "declined", "notes": "Not available. Enquiry sent through their form." }
+  "seeds": [
+    {
+      "id": "sheet-2026-10-16-sunday",
+      "source": "Venue outreach tracker (Sunday sheet), 16 October 2026",
+      "records": [
+        {
+          "venue_id": "per-se",
+          "night": "sun",
+          "status": "quoted",
+          "fb_minimum": 9000,
+          "notes": "May be available. On hold for another party; they can check with them if we are interested. Pricing received."
+        },
+        {
+          "venue_id": "le-bernardin",
+          "night": "sun",
+          "status": "sent",
+          "notes": "Awaiting reply. Followed up, no reply yet. Maybe Maggie or Rebecca can call and check."
+        },
+        {
+          "venue_id": "gramercy-tavern",
+          "night": "sun",
+          "status": "replied",
+          "notes": "Available, but private dining only accommodates up to 20 people. Enquiry sent through their form. They suggested Union Square Cafe."
+        },
+        {
+          "venue_id": "union-square-cafe",
+          "night": "sun",
+          "status": "quoted",
+          "fb_minimum": 5000,
+          "notes": "Available. Offered as an option by Gramercy Tavern because Gramercy can't accommodate our numbers. Pricing received."
+        },
+        {
+          "venue_id": "ci-siamo",
+          "night": "sun",
+          "status": "declined",
+          "notes": "Not available."
+        },
+        {
+          "venue_id": "aquavit",
+          "night": "sun",
+          "status": "quoted",
+          "fb_minimum": 20000,
+          "notes": "Available. Closed on Sunday but ready to host a private dinner. Room can accommodate 44 people. Pricing received."
+        },
+        {
+          "venue_id": "cote-korean-steakhouse",
+          "night": "sun",
+          "status": "quoted",
+          "fb_minimum": 60000,
+          "notes": "Available. Replied with options: semi-private only, with a half buyout."
+        },
+        {
+          "venue_id": "jungsik",
+          "night": "sun",
+          "status": "replied",
+          "notes": "Available, but replied that the date is too early to book. Suggested reaching out 6 to 8 weeks in advance."
+        },
+        {
+          "venue_id": "lartusi",
+          "night": "sun",
+          "status": "quoted",
+          "fb_minimum": 20000,
+          "fees": "$20,000 for a 4-hour buyout, up to 55 guests",
+          "notes": "Available. $20,000 for a 4-hour buyout for up to 55 guests."
+        },
+        {
+          "venue_id": "daniel",
+          "night": "sun",
+          "status": "quoted",
+          "fb_minimum": 15000,
+          "notes": "Available. Replied with their events deck attached. Pricing received."
+        },
+        {
+          "venue_id": "the-modern",
+          "night": "sun",
+          "status": "declined",
+          "notes": "Not available. Enquiry sent through their form."
+        },
+        {
+          "venue_id": "zaytinya",
+          "night": "sun",
+          "status": "quoted",
+          "fb_minimum": 6000,
+          "notes": "Available. Offering the full rear section of the restaurant with a mix of banquettes and standalone tables. Need to check the seating capacity. Enquiry sent through their form."
+        },
+        {
+          "venue_id": "eleven-madison-park",
+          "night": "sun",
+          "status": "declined",
+          "notes": "Not available. Enquiry sent through their form."
+        }
+      ]
+    },
+    {
+      "id": "sheet-2026-10-19",
+      "source": "Venue outreach tracker, 19 October 2026",
+      "records": [
+        {
+          "venue_id": "robert",
+          "night": "sun",
+          "status": "sent",
+          "notes": "Awaiting reply. Enquiry sent through their form."
+        },
+        {
+          "venue_id": "bazaar-meat",
+          "night": "sun",
+          "status": "quoted",
+          "fb_minimum": 10000,
+          "notes": "Available. For groups of up to 40 guests, they offer seating in the Tapas section of the Main Dining Room. Enquiry sent through their form."
+        },
+        {
+          "venue_id": "crown-shy",
+          "night": "sun",
+          "status": "sent",
+          "fb_minimum": 9000,
+          "notes": "Awaiting reply. $9,000 food and beverage minimum noted."
+        }
+      ]
+    }
   ]
 }

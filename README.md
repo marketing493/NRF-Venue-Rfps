@@ -1,7 +1,7 @@
 # NRF 2027 Venue RFPs
 
 An outreach board for two Impact Analytics evenings around NRF 2027 (Javits Center, 10 to 12 January 2027).
-41 New York venues, ranked by distance from Javits. One click per venue opens a prefilled Gmail
+43 New York venues, ranked by distance from Javits. One click per venue opens a prefilled Gmail
 draft. Status, quotes, notes and the shortlist are stored in Neon Postgres and shared by everyone using the board.
 
 | | |
@@ -39,6 +39,11 @@ draft. Status, quotes, notes and the shortlist are stored in Neon Postgres and s
 Tables are created automatically on the first request. There is no migration step.
 The top bar shows **Saved to Neon** when the database is connected, or **This browser only** when it is not.
 
+**Photos are kept in Neon, not just linked.** Every cover is downloaded into the `venue_photos` table the first time it is
+shown (and in a background sweep on page load), so a photo stays even if the venue later changes or deletes it. If a
+cover's link breaks, the saved copy keeps serving. **Upload photo** in a venue's drawer stores your own image (shrunk to
+1600px in the browser first).
+
 **Venue photos load themselves.** The first time anyone opens the board after a deploy, the server reads each venue's photo
 from its own website (Open Graph, Twitter card or JSON-LD image), falling back to a known listing page, checks the image actually
 loads, and saves the URL in Neon so everyone sees the same covers. It runs at most once every six hours. Images are relayed through
@@ -63,7 +68,8 @@ npm test                      # fit calculation, email wording and Gmail URL
 | `POST /api/meta/:venue` | Star, cover image URL, email override |
 | `GET /api/draft/:venue/:night` | Prefilled subject, body and Gmail URL |
 | `POST /api/covers` | Fetch venue photos (`{}` missing only, `{"force":true}` all, `{"venue":id}` one) and save them in Neon |
-| `GET /api/img/:venue` | The venue's saved photo, relayed and cached for a day |
+| `GET /api/img/:venue` | The venue's photo from the saved copy in Neon (fetched and saved on first view) |
+| `POST /api/photo/:venue` | Upload a photo (raw image body, up to 3.5 MB) |
 | `POST /api/reset` | Clear outreach (`{"confirm":"RESET"}`) |
 | `GET /api/activity` | Latest 80 changes |
 | `GET /api/export?format=csv\|json` | The whole tracker |
@@ -73,8 +79,8 @@ npm test                      # fit calculation, email wording and Gmail URL
 - **The brief** (dates, headcounts, timing, sender) lives in `data/brief.json`. Change it there and every badge and email follows.
 - **Venues** live in `data/venues.json`. Each room has `seated`, `standing`, `approximate`, `single_figure` and `exclusive`.
   Keep private-room figures and buyout figures separate. Record the source and the date you checked.
-- **Bulk status updates** go in `data/outreach-seed.json`. Give the file a new `id` and deploy: on the next page load the
-  server applies it once (status and prices overwrite, notes are appended), logs it in Activity, and never applies that `id` again.
+- **Bulk status updates** go in `data/outreach-seed.json`. Add a new entry to `seeds` with its own `id` and deploy: on the next page load the
+  server applies it once (status and prices overwrite, notes are appended), logs it in Activity, and never applies that `id` again. Earlier entries stay in the file as a record.
   A room or buyout marked `"confirmed": true` came from the venue itself and overrides research in the fit badge.
 - **The email wording** is in `lib/mailer.ts`. `tests/fit.test.ts` holds the expected text, so any change is deliberate.
 

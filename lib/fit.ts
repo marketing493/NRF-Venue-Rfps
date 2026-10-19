@@ -123,6 +123,6 @@ export function bestVerdict(venue: Venue, nights: Night[]): Verdict {
 
 export function formatRoom(r: Room): string {
   const t = (v: number | null) => (v == null ? '' : `${r.approximate ? '~' : ''}${v}`);
-  if (r.single_figure) return r.seated == null ? `${t(r.standing)} standing` : t(r.seated);
+  if (r.single_figure || r.standing == null || r.seated == null) return r.seated == null ? `${t(r.standing)} standing` : t(r.seated);
   return `${t(r.seated)}·${t(r.standing)}`;
 }

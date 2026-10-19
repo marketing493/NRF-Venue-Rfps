@@ -1,44 +1,34 @@
-import { safeImageUrl, UA } from '@/lib/covers';
-import { dbConfigured, getCoverUrl } from '@/lib/db';
+import { downloadImage, safeImageUrl } from '@/lib/covers';
+import { dbConfigured, getCoverUrl, getPhoto, savePhoto } from '@/lib/db';
 import { checkVenue } from '@/lib/server';
 
 export const dynamic = 'force-dynamic';
 
-const MAX_BYTES = 4_000_000; // Stay under Vercel's response limit; larger images are served by redirect.
+const KEEP = { 'Cache-Control': 'public, max-age=31536000, immutable', 'X-Content-Type-Options': 'nosniff' };
+
+const serve = (type: string, data: Uint8Array) =>
+  new Response(Buffer.from(data), { headers: { 'Content-Type': type, ...KEEP } });
 
 /**
- * Relay a venue's saved photo through our own domain. Venue sites often block hotlinking
- * or serve plain http, which browsers refuse on an https page. Cached at the edge for a day.
+ * A venue's photo, served from our own copy in Neon. If the saved copy is missing or was
+ * taken from a different link than the current cover, fetch the cover once and keep it.
+ * When the venue's site later breaks, the saved copy still serves.
  */
 export async function GET(_req: Request, ctx: { params: Promise<{ venue: string }> }) {
   const { venue } = await ctx.params;
   if (!checkVenue(venue) || !dbConfigured()) return new Response('Not found', { status: 404 });
-  const stored = await getCoverUrl(venue).catch(() => null);
-  const url = stored ? safeImageUrl(stored) : null;
-  if (!url) return new Response('Not found', { status: 404 });
-  const ctrl = new AbortController();
-  const t = setTimeout(() => ctrl.abort(), 9000);
-  try {
-    const res = await fetch(url, { headers: { 'User-Agent': UA, Accept: 'image/*' }, redirect: 'follow', signal: ctrl.signal });
-    const type = res.headers.get('content-type') || '';
-    if (!res.ok || !type.startsWith('image/')) return new Response('Not found', { status: 404 });
-    const len = Number(res.headers.get('content-length') || 0);
-    if (len > MAX_BYTES) {
-      await res.body?.cancel().catch(() => {});
-      return Response.redirect(url.toString().replace(/^http:/, 'https:'), 302);
+  const [cover, stored] = await Promise.all([getCoverUrl(venue).catch(() => null), getPhoto(venue).catch(() => null)]);
+  if (stored && (!cover || stored.source_url === cover)) return serve(stored.content_type, stored.data);
+
+  if (cover && safeImageUrl(cover)) {
+    const img = await downloadImage(cover);
+    if (img) {
+      await savePhoto(venue, img.type, img.bytes, cover).catch(console.error);
+      return serve(img.type, img.bytes);
     }
-    const buf = await res.arrayBuffer();
-    if (buf.byteLength > MAX_BYTES) return Response.redirect(url.toString().replace(/^http:/, 'https:'), 302);
-    return new Response(buf, {
-      headers: {
-        'Content-Type': type,
-        'Cache-Control': 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800',
-        'X-Content-Type-Options': 'nosniff',
-      },
-    });
-  } catch {
-    return new Response('Not found', { status: 404 });
-  } finally {
-    clearTimeout(t);
   }
+  // The new link failed: keep showing the photo we already had rather than nothing.
+  if (stored) return serve(stored.content_type, stored.data);
+  if (cover && safeImageUrl(cover)) return Response.redirect(cover.replace(/^http:/, 'https:'), 302);
+  return new Response('Not found', { status: 404 });
 }

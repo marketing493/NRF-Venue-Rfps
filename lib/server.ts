@@ -62,7 +62,7 @@ export function parseMetaPatch(body: Record<string, unknown>): MetaPatch {
   if ('starred' in body) out.starred = Boolean(body.starred);
   if ('cover_url' in body) {
     const v = body.cover_url ? String(body.cover_url).trim() : null;
-    if (v && !/^https?:\/\//i.test(v)) throw new Error('Cover must be an http(s) URL');
+    if (v && !/^https?:\/\//i.test(v) && !/^upload:\d{4}-\d{2}-\d{2}T[\d:.]+Z$/.test(v)) throw new Error('Cover must be an http(s) URL');
     out.cover_url = v ? v.slice(0, 1000) : null;
   }
   if ('email_override' in body) {

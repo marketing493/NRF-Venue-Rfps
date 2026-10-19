@@ -137,5 +137,9 @@ export interface OutreachSeed {
   records: SeedRecord[];
 }
 
+export interface SeedFile {
+  seeds: OutreachSeed[];
+}
+
 export type OutreachPatch = Partial<Pick<OutreachRecord, 'status' | 'fb_minimum' | 'all_in' | 'fees' | 'notes' | 'sent_at'>>;
 export type MetaPatch = Partial<Pick<VenueMeta, 'starred' | 'cover_url' | 'email_override'>>;

@@ -98,12 +98,13 @@ function NightTracker({ venue, night, brief, record, meta, update, onPreview, on
   );
 }
 
-export function Drawer({ venue, brief, night, outreach, meta, activity, onClose, update, updateMeta, onPreview, onSent }: {
+export function Drawer({ venue, brief, night, outreach, meta, activity, onClose, update, updateMeta, onPreview, onSent, onUploaded }: {
   venue: Venue; brief: Brief; night: NightKey; outreach: Record<string, OutreachRecord>; meta?: VenueMeta; activity: ActivityItem[];
   onClose: () => void;
   update: (venue: string, night: NightKey, patch: OutreachPatch, debounce?: number) => void;
   updateMeta: (patch: Partial<VenueMeta>, debounce?: number) => void;
   onPreview: (night: NightKey) => void; onSent: (night: NightKey) => void;
+  onUploaded: (meta: VenueMeta) => void;
 }) {
   const [tab, setTab] = useState<NightKey>(venue.nights.includes(night) ? night : venue.nights[0]);
   const emailF = useField(meta?.email_override ?? '', () => {});
@@ -247,10 +248,55 @@ export function Drawer({ venue, brief, night, outreach, meta, activity, onClose,
         <section className="d-sec no-print">
           <h4>Cover photo</h4>
           <CoverField meta={meta} onSave={url => updateMeta({ cover_url: url })} />
-          {(venue.website || venue.photo_pages?.length) ? <FindPhoto venueId={venue.id} onFound={url => updateMeta({ cover_url: url })} /> : null}
+          <div className="foot-row" style={{ marginTop: 12 }}>
+            <UploadPhoto venueId={venue.id} onSaved={m => onUploaded(m)} />
+            {(venue.website || venue.photo_pages?.length) ? <FindPhoto venueId={venue.id} onFound={url => updateMeta({ cover_url: url })} /> : null}
+          </div>
+          <p className="hint" style={{ margin: '10px 0 0', fontSize: 12, color: 'var(--ink-3)' }}>Every photo is saved in the board's database, so it stays even if the venue changes its website.</p>
         </section>
         <div style={{ height: 24 }} />
       </aside>
+    </>
+  );
+}
+
+/** Shrink an image in the browser so uploads stay small: longest side 1600px, JPEG. */
+async function shrink(file: File): Promise<Blob> {
+  const bmp = await createImageBitmap(file);
+  const scale = Math.min(1, 1600 / Math.max(bmp.width, bmp.height));
+  const canvas = document.createElement('canvas');
+  canvas.width = Math.round(bmp.width * scale);
+  canvas.height = Math.round(bmp.height * scale);
+  canvas.getContext('2d')!.drawImage(bmp, 0, 0, canvas.width, canvas.height);
+  bmp.close();
+  return new Promise((resolve, reject) => canvas.toBlob(b => (b ? resolve(b) : reject(new Error('Could not read that image'))), 'image/jpeg', 0.86));
+}
+
+function UploadPhoto({ venueId, onSaved }: { venueId: string; onSaved: (m: VenueMeta) => void }) {
+  const [state, setState] = useState<'idle' | 'busy' | 'error'>('idle');
+  const [msg, setMsg] = useState('');
+  const pick = async (file: File | undefined) => {
+    if (!file) return;
+    setState('busy');
+    try {
+      const blob = await shrink(file);
+      const r = await fetch(`/api/photo/${venueId}`, { method: 'POST', headers: { 'Content-Type': 'image/jpeg' }, body: blob });
+      const j = await r.json();
+      if (!r.ok) throw new Error(j.error || 'Upload failed');
+      onSaved(j);
+      setState('idle');
+    } catch (e) {
+      setMsg((e as Error).message);
+      setState('error');
+    }
+  };
+  return (
+    <>
+      <label className="btn sm primary" style={{ cursor: 'pointer' }}>
+        {state === 'busy' ? 'Uploading' : 'Upload photo'}
+        <input type="file" accept="image/*" hidden disabled={state === 'busy'} onChange={e => { void pick(e.target.files?.[0]); e.target.value = ''; }} />
+      </label>
+      {state === 'error' && <span className="hint" style={{ color: '#b54500' }}>{msg}</span>}
     </>
   );
 }
@@ -269,26 +315,28 @@ function FindPhoto({ venueId, onFound }: { venueId: string; onFound: (url: strin
     }
   };
   return (
-    <div className="foot-row" style={{ marginTop: 12 }}>
+    <>
       <button className="btn sm" onClick={run} disabled={state === 'busy'}>{state === 'busy' ? 'Looking' : 'Find photo from venue site'}</button>
-      {state === 'none' && <span className="hint">No usable photo on their site. Paste one above.</span>}
+      {state === 'none' && <span className="hint">No usable photo on their site. Upload or paste one.</span>}
       {state === 'error' && <span className="hint">Needs the Neon connection. Paste a link above instead.</span>}
-    </div>
+    </>
   );
 }
 
 function CoverField({ meta, onSave }: { meta?: VenueMeta; onSave: (u: string | null) => void }) {
-  const [v, setV] = useState(meta?.cover_url ?? '');
+  const shown = meta?.cover_url && !meta.cover_url.startsWith('upload:') ? meta.cover_url : '';
+  const [v, setV] = useState(shown);
+  useEffect(() => setV(shown), [shown]);
   const [err, setErr] = useState<string | null>(null);
   return (
     <div className="field" style={{ marginBottom: 0 }}>
-      <label htmlFor="cover">Image URL</label>
+      <label htmlFor="cover">Image URL{meta?.cover_url?.startsWith('upload:') ? ' (currently an uploaded photo)' : ''}</label>
       <input id="cover" value={v} placeholder="https://…/photo.jpg" onChange={e => setV(e.target.value)}
         onBlur={() => {
           const t = v.trim();
           if (t && !/^https?:\/\//i.test(t)) { setErr('Use a full http(s) link to an image'); return; }
           setErr(null);
-          if (t !== (meta?.cover_url ?? '')) onSave(t || null);
+          if (t !== shown) onSave(t || null);
         }} />
       <span className="hint" style={err ? { color: '#b54500' } : undefined}>{err ?? 'Paste any image link, or use Photos in the top bar to pull each venue’s own image.'}</span>
     </div>

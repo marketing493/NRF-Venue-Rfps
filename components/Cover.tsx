@@ -18,7 +18,8 @@ const hash = (s: string) => {
 export function CoverArt({ venue, url }: { venue: Venue; url: string | null | undefined }) {
   const [attempt, setAttempt] = useState(0);
   useEffect(() => setAttempt(0), [url]);
-  const sources = url ? [`/api/img/${venue.id}?v=${hash(url)}`, url] : [];
+  // Uploaded photos live only in our database, so there is no original link to fall back to.
+  const sources = url ? [`/api/img/${venue.id}?v=${hash(url)}`, ...(/^https?:/i.test(url) ? [url] : [])] : [];
   const src = sources[attempt];
   if (src) {
     // eslint-disable-next-line @next/next/no-img-element
