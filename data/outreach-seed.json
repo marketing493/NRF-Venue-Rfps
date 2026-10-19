@@ -129,6 +129,136 @@
           "notes": "F&B minimum updated to $9,500 (was $9,000)."
         }
       ]
+    },
+    {
+      "id": "master-planner-2026-10-19",
+      "source": "NRF 2027 Master Planner, Dinner Options tab, 19 October 2026",
+      "records": [
+        {
+          "venue_id": "per-se",
+          "night": "sun",
+          "status": "quoted",
+          "notes": "May be available. On hold for another party; they can check with them if we are interested. Pricing received.",
+          "fb_minimum": 9000
+        },
+        {
+          "venue_id": "le-bernardin",
+          "night": "sun",
+          "status": "sent",
+          "notes": "Awaiting reply. Followed up, no reply yet. Maybe Maggie or Rebecca can call and check."
+        },
+        {
+          "venue_id": "gramercy-tavern",
+          "night": "sun",
+          "status": "replied",
+          "notes": "Available, but private dining only accommodates up to 20 people. Enquiry sent through their form. They suggested Union Square Cafe."
+        },
+        {
+          "venue_id": "union-square-cafe",
+          "night": "sun",
+          "status": "quoted",
+          "notes": "Available. Offered as an option by Gramercy Tavern because Gramercy can't accommodate our numbers. Pricing received.",
+          "fb_minimum": 5000
+        },
+        {
+          "venue_id": "ci-siamo",
+          "night": "sun",
+          "status": "declined",
+          "notes": "Not available."
+        },
+        {
+          "venue_id": "aquavit",
+          "night": "sun",
+          "status": "quoted",
+          "notes": "Available. Closed on Sunday but ready to host a private dinner. Room can accommodate 44 people. Pricing received.",
+          "fb_minimum": 20000
+        },
+        {
+          "venue_id": "cote-korean-steakhouse",
+          "night": "sun",
+          "status": "quoted",
+          "notes": "Available. Replied with options: semi-private only, with a half buyout.",
+          "fb_minimum": 60000
+        },
+        {
+          "venue_id": "jungsik",
+          "night": "sun",
+          "status": "replied",
+          "notes": "Available, but replied that the date is too early to book. Suggested reaching out 6 to 8 weeks in advance."
+        },
+        {
+          "venue_id": "lartusi",
+          "night": "sun",
+          "status": "quoted",
+          "notes": "Available. $20,000 for a 4-hour buyout for up to 55 guests."
+        },
+        {
+          "venue_id": "daniel",
+          "night": "sun",
+          "status": "quoted",
+          "notes": "Available. Replied with their events deck attached. Pricing received.",
+          "fb_minimum": 15000
+        },
+        {
+          "venue_id": "the-modern",
+          "night": "sun",
+          "status": "declined",
+          "notes": "Not available. Enquiry sent through their form."
+        },
+        {
+          "venue_id": "zaytinya",
+          "night": "sun",
+          "status": "quoted",
+          "notes": "Available. Offering the full rear section of the restaurant with a mix of banquettes and standalone tables. Need to check the seating capacity. Enquiry sent through their form.",
+          "fb_minimum": 6000
+        },
+        {
+          "venue_id": "eleven-madison-park",
+          "night": "sun",
+          "status": "declined",
+          "notes": "Not available. Enquiry sent through their form."
+        },
+        {
+          "venue_id": "zou-zous",
+          "night": "sun",
+          "status": "quoted",
+          "notes": "Available. The combined Parlour and Mural Room can accommodate up to 48 guests.",
+          "fb_minimum": 8000
+        },
+        {
+          "venue_id": "robert",
+          "night": "sun",
+          "status": "sent",
+          "notes": "Awaiting reply. Enquiry sent through their form."
+        },
+        {
+          "venue_id": "bazaar-meat",
+          "night": "sun",
+          "status": "quoted",
+          "notes": "Available. For groups of up to 40 guests, they offer seating in the Tapas section of the Main Dining Room. Enquiry sent through their form.",
+          "fb_minimum": 10000
+        },
+        {
+          "venue_id": "hudson-vu",
+          "night": "sun",
+          "status": "replied",
+          "notes": "Available. They have both indoor and outdoor spaces, and offer full venue buyouts for groups of this size. No pricing yet."
+        },
+        {
+          "venue_id": "crown-shy",
+          "night": "sun",
+          "status": "quoted",
+          "notes": "Available. The Pearl and Cedar Rooms can be used together for up to 50 guests seated maximum.",
+          "fb_minimum": 9500
+        },
+        {
+          "venue_id": "amali",
+          "night": "sun",
+          "status": "quoted",
+          "notes": "Available. Sent a proposal for the full second floor, a townhouse setting combining the Sopra and Fireplace Rooms.",
+          "fb_minimum": 5000
+        }
+      ]
     }
   ]
 }
