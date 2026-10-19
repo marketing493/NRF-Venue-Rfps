@@ -146,7 +146,7 @@ async function applyOneSeed(seed: OutreachSeed): Promise<void> {
   if (!claim.length) return;
   try {
     for (const r of seed.records) {
-      const patch: OutreachPatch = { status: r.status };
+      const patch: OutreachPatch = r.status ? { status: r.status } : {};
       if (r.fb_minimum != null) patch.fb_minimum = r.fb_minimum;
       if (r.all_in != null) patch.all_in = r.all_in;
       if (r.fees != null) patch.fees = r.fees;

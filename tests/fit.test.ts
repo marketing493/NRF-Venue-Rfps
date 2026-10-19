@@ -75,12 +75,12 @@ test('Venues with no capacity on file read as unknown, not as a fit', () => {
 
 test('Every seed record names a real venue on a night it is offered', () => {
   const file = JSON.parse(readFileSync(new URL('../data/outreach-seed.json', import.meta.url), 'utf8'));
-  assert.deepEqual(file.seeds.map((s: { records: unknown[] }) => s.records.length), [13, 3]);
+  assert.deepEqual(file.seeds.map((s: { records: unknown[] }) => s.records.length), [13, 3, 1]);
   assert.equal(new Set(file.seeds.map((s: { id: string }) => s.id)).size, file.seeds.length);
-  for (const r of file.seeds.flatMap((s: { records: { venue_id: string; night: 'sat' | 'sun'; status: string }[] }) => s.records)) {
+  for (const r of file.seeds.flatMap((s: { records: { venue_id: string; night: 'sat' | 'sun'; status?: string }[] }) => s.records)) {
     assert.ok(v(r.venue_id), `unknown venue ${r.venue_id}`);
     assert.ok(v(r.venue_id).nights.includes(r.night), `${r.venue_id} not offered on ${r.night}`);
-    assert.ok(['not_contacted', 'sent', 'replied', 'quoted', 'declined', 'booked'].includes(r.status));
+    if (r.status) assert.ok(['not_contacted', 'sent', 'replied', 'quoted', 'declined', 'booked'].includes(r.status));
   }
 });
 

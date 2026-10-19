@@ -124,7 +124,8 @@ export interface AppState {
 export interface SeedRecord {
   venue_id: string;
   night: NightKey;
-  status: Status;
+  /** Leave out to change only the other fields. */
+  status?: Status;
   fb_minimum?: number;
   all_in?: number;
   fees?: string;

@@ -143,7 +143,7 @@ export function useTracker() {
           const k = okey(r.venue_id, r.night);
           const base = m.outreach[k] ?? blankRecord(r.venue_id, r.night);
           const notes = !base.notes ? r.notes ?? null : r.notes && !base.notes.includes(r.notes) ? `${base.notes}\n\n${r.notes}` : base.notes;
-          m.outreach[k] = { ...base, status: r.status, fb_minimum: r.fb_minimum ?? base.fb_minimum, all_in: r.all_in ?? base.all_in,
+          m.outreach[k] = { ...base, status: r.status ?? base.status, fb_minimum: r.fb_minimum ?? base.fb_minimum, all_in: r.all_in ?? base.all_in,
             fees: r.fees ?? base.fees, notes, updated_at: now, updated_by: 'Sheet import' };
         }
         m.seeds = [...(m.seeds ?? []), seed.id];

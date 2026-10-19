@@ -117,6 +117,18 @@
           "notes": "Awaiting reply. $9,000 food and beverage minimum noted."
         }
       ]
+    },
+    {
+      "id": "edit-2026-10-19-crown-shy-minimum",
+      "source": "Crown Shy minimum update, 19 October 2026",
+      "records": [
+        {
+          "venue_id": "crown-shy",
+          "night": "sun",
+          "fb_minimum": 9500,
+          "notes": "F&B minimum updated to $9,500 (was $9,000)."
+        }
+      ]
     }
   ]
 }
